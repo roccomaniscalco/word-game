@@ -8,6 +8,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@mantine/core": "^4.1.1",
+    "@mantine/hooks": "^4.1.1",
+    "@mantine/modals": "^4.1.1",
     "eslint": "^8.12.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.0.0",

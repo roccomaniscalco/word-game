@@ -1,9 +1,8 @@
-import { Grid, Stack, Text, Title } from "@mantine/core"
+import { Grid, Stack, Title } from "@mantine/core"
 import { useElementSize } from "@mantine/hooks"
 import { arrayOf, bool, func, string } from "prop-types"
 import { Backspace as BackspaceIcon } from "tabler-icons-react"
 import qwerty from "../constants/qwerty"
-import useKeyboard from "../hooks/useKeyboard"
 import Key from "./Key"
 
 // divide letters into the 3 rows of a qwerty keyboard
@@ -17,7 +16,7 @@ const KeyboardRow = ({ row, onClick, isLastRow }) => {
       {row.map((letter) => (
         <Grid.Col key={letter} span={2}>
           <Key onClick={onClick} code={letter}>
-            <Title order={3}>{letter}</Title>
+            <Title order={4}>{letter}</Title>
           </Key>
         </Grid.Col>
       ))}
@@ -38,18 +37,20 @@ KeyboardRow.propTypes = {
   isLastRow: bool,
 }
 
-const Keyboard = () => {
-  const { input, handleKeyClick } = useKeyboard()
+const Keyboard = ({ onClick }) => {
   const { ref, width } = useElementSize()
 
   return (
-    <Stack spacing={5} sx={{ height: width / 3 }} ref={ref}>
-      <KeyboardRow row={firstRow} onClick={handleKeyClick} />
-      <KeyboardRow row={secondRow} onClick={handleKeyClick} />
-      <KeyboardRow row={thirdRow} onClick={handleKeyClick} isLastRow />
-      <Text>{input.join("")}</Text>
+    <Stack spacing={5} ref={ref} sx={{ height: width / 3, width: "100%" }}>
+      <KeyboardRow row={firstRow} onClick={onClick} />
+      <KeyboardRow row={secondRow} onClick={onClick} />
+      <KeyboardRow row={thirdRow} onClick={onClick} isLastRow />
     </Stack>
   )
+}
+
+Keyboard.propTypes = {
+  onClick: func.isRequired,
 }
 
 export default Keyboard

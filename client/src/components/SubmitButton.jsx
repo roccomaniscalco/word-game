@@ -2,7 +2,7 @@ import { Button } from "@mantine/core"
 import { func } from "prop-types"
 import { arrayOf, string } from "prop-types"
 import React from "react"
-import WORDS from "../constants/words"
+import { WORDS } from "../constants/words"
 
 const SubmitButton = ({ input, onClick }) => {
   const isAWord = WORDS.includes(input.join(""))

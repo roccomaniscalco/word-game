@@ -1,4 +1,4 @@
-const WORDS = [
+export const WORDS = [
   "which",
   "there",
   "their",
@@ -5758,4 +5758,7 @@ const WORDS = [
   "pupal",
 ]
 
-export default WORDS
+export const GET_RANDOM_WORD = () => {
+  const randomIndex = Math.round(Math.random() * WORDS.length)
+  return WORDS[randomIndex].split("")
+}

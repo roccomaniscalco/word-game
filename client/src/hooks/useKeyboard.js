@@ -1,20 +1,19 @@
 import { useCallback, useEffect, useState } from "react"
 
-const useGuess = () => {
-  const [guess, setGuess] = useState([])
+// accept user input from actual keyboard and on-screen keyboard
+const useKeyboard = () => {
+  const [input, setInput] = useState([])
 
   const append = (letter) => {
-    setGuess((prevGuess) =>
+    setInput((prevGuess) =>
       prevGuess.length < 5 ? [...prevGuess, letter] : prevGuess
     )
   }
   const pop = () => {
-    setGuess((prevGuess) =>
-      prevGuess.length > 0 ? prevGuess.slice(0, -1) : prevGuess
-    )
+    setInput((prevGuess) => prevGuess.slice(0, -1))
   }
   const submit = () => {
-    alert(guess)
+    alert(input)
   }
 
   const handleKeydown = ({ code }) => {
@@ -25,6 +24,7 @@ const useGuess = () => {
   }
 
   const handleKeyClick = useCallback((code) => {
+    code = code.toLocaleLowerCase()
     if (code === "enter") submit()
     else if (code === "backspace") pop()
     else append(code)
@@ -33,9 +33,10 @@ const useGuess = () => {
   useEffect(() => {
     window.addEventListener("keydown", handleKeydown)
     return () => window.removeEventListener("keydown", handleKeydown)
-  }, [guess, setGuess])
+    // must reattach keydown listener when input changes
+  }, [input, setInput])
 
-  return { guess, handleKeyClick }
+  return { input, handleKeyClick }
 }
 
-export default useGuess
+export default useKeyboard

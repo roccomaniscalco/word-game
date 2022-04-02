@@ -3,7 +3,7 @@ import { useElementSize } from "@mantine/hooks"
 import { arrayOf, bool, func, string } from "prop-types"
 import { Backspace as BackspaceIcon } from "tabler-icons-react"
 import qwerty from "../constants/qwerty"
-import useGuess from "../hooks/useGuess"
+import useKeyboard from "../hooks/useKeyboard"
 import Key from "./Key"
 
 // divide letters into the 3 rows of a qwerty keyboard
@@ -39,15 +39,15 @@ KeyboardRow.propTypes = {
 }
 
 const Keyboard = () => {
-  const { guess, handleKeyClick } = useGuess()
+  const { input, handleKeyClick } = useKeyboard()
   const { ref, width } = useElementSize()
 
   return (
-    <Stack spacing={5} sx={{ height: width / 2.8 }} ref={ref}>
+    <Stack spacing={5} sx={{ height: width / 3 }} ref={ref}>
       <KeyboardRow row={firstRow} onClick={handleKeyClick} />
       <KeyboardRow row={secondRow} onClick={handleKeyClick} />
       <KeyboardRow row={thirdRow} onClick={handleKeyClick} isLastRow />
-      <Text>{guess.join("")}</Text>
+      <Text>{input.join("")}</Text>
     </Stack>
   )
 }

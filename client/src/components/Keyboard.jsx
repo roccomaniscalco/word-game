@@ -32,8 +32,8 @@ const KeyboardRow = ({ row, onClick, isLastRow }) => {
 }
 
 KeyboardRow.propTypes = {
-  row: arrayOf(string),
-  onClick: func,
+  row: arrayOf(string).isRequired,
+  onClick: func.isRequired,
   isLastRow: bool,
 }
 

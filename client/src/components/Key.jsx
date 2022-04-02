@@ -32,9 +32,9 @@ const Letter = ({ children, onClick, code }) => {
 }
 
 Letter.propTypes = {
-  children: node,
-  onClick: func,
-  code: string,
+  children: node.isRequired,
+  onClick: func.isRequired,
+  code: string.isRequired,
 }
 
 export default Letter

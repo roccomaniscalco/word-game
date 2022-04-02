@@ -1,6 +1,8 @@
-import { Grid, Stack } from "@mantine/core"
-import { useElementSize } from "@mantine/hooks"
+import { Grid, Stack, Text } from "@mantine/core"
+import { mergeRefs, useElementSize, useEventListener } from "@mantine/hooks"
+import { func } from "prop-types"
 import { arrayOf, string } from "prop-types"
+import useGuess from "../hooks/useGuess"
 import Key from "./Key"
 
 const letters = [
@@ -37,12 +39,12 @@ const firstRow = letters.slice(0, 10)
 const secondRow = letters.slice(10, 19)
 const thirdRow = letters.slice(19, 26)
 
-const KeyboardRow = ({ row }) => {
+const KeyboardRow = ({ row, onClick }) => {
   return (
     <Grid columns={10} gutter={5} justify="center" sx={{ height: "100%" }}>
       {row.map((letter) => (
         <Grid.Col key={letter} span={1}>
-          <Key>{letter}</Key>
+          <Key onClick={onClick}>{letter}</Key>
         </Grid.Col>
       ))}
     </Grid>
@@ -51,16 +53,19 @@ const KeyboardRow = ({ row }) => {
 
 KeyboardRow.propTypes = {
   row: arrayOf(string),
+  onClick: func,
 }
 
 const Keyboard = () => {
+  const { guess, handleKeyClick } = useGuess()
   const { ref, width } = useElementSize()
 
   return (
     <Stack spacing={5} sx={{ height: width / 3 }} ref={ref}>
-      <KeyboardRow row={firstRow} />
-      <KeyboardRow row={secondRow} />
-      <KeyboardRow row={thirdRow} />
+      <KeyboardRow row={firstRow} onClick={handleKeyClick} />
+      <KeyboardRow row={secondRow} onClick={handleKeyClick} />
+      <KeyboardRow row={thirdRow} onClick={handleKeyClick} />
+      <Text>{guess.join("")}</Text>
     </Stack>
   )
 }

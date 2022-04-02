@@ -1,5 +1,5 @@
 import { Button, createStyles, Title } from "@mantine/core"
-import { string } from "prop-types"
+import { func, string } from "prop-types"
 
 const useStyles = createStyles((theme) => ({
   letterContainer: {
@@ -11,27 +11,30 @@ const useStyles = createStyles((theme) => ({
     alignItems: "center",
     width: "100%",
     height: "100%",
-    
-    textTransform: "capitalize",
-    
-    "&:hover" : {
-      backgroundColor: theme.colors.dark[4],
-    }
+
+    "&:hover": {
+      backgroundColor: theme.fn.lighten(theme.colors.dark[5], 0.1),
+    },
   },
 }))
 
-const Letter = ({ children }) => {
+const Letter = ({ children, onClick }) => {
   const { classes } = useStyles()
 
   return (
-    <Button className={classes.letterContainer}>
+    <Button
+      onClick={() => onClick(children)}
+      className={classes.letterContainer}
+      uppercase
+    >
       <Title order={3}>{children}</Title>
     </Button>
   )
 }
 
 Letter.propTypes = {
-    children: string,
+  children: string,
+  onClick: func,
 }
 
 export default Letter

@@ -1,7 +1,10 @@
 import { Grid, Stack, Title } from "@mantine/core"
 import { useElementSize } from "@mantine/hooks"
 import { arrayOf, bool, func, string } from "prop-types"
-import { Backspace as BackspaceIcon } from "tabler-icons-react"
+import {
+  Backspace as BackspaceIcon,
+  ArrowForward as ArrowForwardIcon,
+} from "tabler-icons-react"
 import qwerty from "../constants/qwerty"
 import Key from "./Key"
 
@@ -13,6 +16,13 @@ const thirdRow = qwerty.LETTERS.slice(19, 26)
 const KeyboardRow = ({ row, onClick, isLastRow }) => {
   return (
     <Grid columns={20} gutter={5} justify="center" sx={{ height: "100%" }}>
+      {isLastRow && (
+        <Grid.Col span={3}>
+          <Key onClick={onClick} code="enter">
+            <ArrowForwardIcon />
+          </Key>
+        </Grid.Col>
+      )}
       {row.map((letter) => (
         <Grid.Col key={letter} span={2}>
           <Key onClick={onClick} code={letter}>
@@ -21,7 +31,7 @@ const KeyboardRow = ({ row, onClick, isLastRow }) => {
         </Grid.Col>
       ))}
       {isLastRow && (
-        <Grid.Col span={2}>
+        <Grid.Col span={3}>
           <Key onClick={onClick} code="backspace">
             <BackspaceIcon />
           </Key>

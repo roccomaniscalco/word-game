@@ -25,8 +25,8 @@ const useGameBoard = () => {
 
   const handleWordSubmit = useCallback(
     (word) => {
-      // validate gameBoard is not full and word is valid before inserting
-      if (rowCount < 6 && IS_A_WORD(word)) insert(word, rowCount)
+      // validate gameBoard is not full before inserting
+      if (rowCount < 6) insert(word, rowCount)
     },
     [rowCount]
   )

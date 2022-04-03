@@ -11,7 +11,7 @@ function App() {
 
   return (
     <AppShell padding="xs">
-      <Container size="sm">
+      <Container size="xs">
         <Stack align="center">
           <GameBoard gameBoard={gameBoard} />
           <Keyboard onClick={handleKeyClick} />

@@ -1,19 +1,19 @@
-import { AppShell, Container, Stack, Text, Title } from "@mantine/core"
+import { AppShell, Container, Stack } from "@mantine/core"
+import GameBoard from "./components/GameBoard"
 import Keyboard from "./components/Keyboard"
 import SubmitButton from "./components/SubmitButton"
 import useGameBoard from "./hooks/useGameBoard"
 import useKeyboard from "./hooks/useKeyboard"
 
 function App() {
-  const { handleWordSubmit } = useGameBoard()
+  const { gameBoard, handleWordSubmit } = useGameBoard()
   const { input, handleKeyClick } = useKeyboard(handleWordSubmit)
 
   return (
     <AppShell padding="xs">
       <Container size="sm">
-        <Title order={1}>wordinator</Title>
         <Stack align="center">
-          <Text>{input}</Text>
+          <GameBoard gameBoard={gameBoard} />
           <Keyboard onClick={handleKeyClick} />
           <SubmitButton input={input} onSubmit={handleWordSubmit} />
         </Stack>

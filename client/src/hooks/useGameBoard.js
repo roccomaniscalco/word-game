@@ -1,5 +1,4 @@
 import { useCallback, useState } from "react"
-import { IS_A_WORD } from "../constants/words"
 
 const useGameBoard = () => {
   const [rowCount, setRowCount] = useState(0)

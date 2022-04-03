@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from "react"
 
 // accept user input from actual keyboard and on-screen keyboard
-const useKeyboard = () => {
+const useKeyboard = (onWordSubmit) => {
   const [input, setInput] = useState([])
 
   const append = (letter) => {
@@ -12,21 +12,18 @@ const useKeyboard = () => {
   const pop = () => {
     setInput((prevGuess) => prevGuess.slice(0, -1))
   }
-  const submit = () => {
-    alert(input)
-  }
 
   const handleKeydown = ({ code }) => {
     code = code.toLocaleLowerCase()
-    if (code === "enter") submit()
+    // submit word on enter
+    if (code === "enter") onWordSubmit(input)
     else if (code === "backspace") pop()
     else if (code.includes("key")) append(code.replace("key", ""))
   }
 
   const handleKeyClick = useCallback((code) => {
     code = code.toLocaleLowerCase()
-    if (code === "enter") submit()
-    else if (code === "backspace") pop()
+    if (code === "backspace") pop()
     else append(code)
   }, [])
 

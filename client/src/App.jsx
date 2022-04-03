@@ -5,8 +5,8 @@ import useGameBoard from "./hooks/useGameBoard"
 import useKeyboard from "./hooks/useKeyboard"
 
 function App() {
-  const { input, handleKeyClick } = useKeyboard()
   const { handleWordSubmit } = useGameBoard()
+  const { input, handleKeyClick } = useKeyboard(handleWordSubmit)
 
   return (
     <AppShell padding="xs">

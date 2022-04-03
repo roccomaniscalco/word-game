@@ -1,4 +1,5 @@
 import { useCallback, useState } from "react"
+import { IS_A_WORD } from "../constants/words"
 
 const useGameBoard = () => {
   const [rowCount, setRowCount] = useState(0)
@@ -12,7 +13,6 @@ const useGameBoard = () => {
   ])
 
   const insert = (word, idx) => {
-    // insert word into gameBoard at idx
     // functional equivalent of gameBoard[idx] = word
     setGameBoard((prevGameBoard) => [
       ...prevGameBoard.slice(0, idx),
@@ -25,8 +25,8 @@ const useGameBoard = () => {
 
   const handleWordSubmit = useCallback(
     (word) => {
-      // validate gameBoard is not full before inserting
-      if (rowCount < 6) insert(word, rowCount)
+      // validate gameBoard is not full and word is valid before inserting
+      if (rowCount < 6 && IS_A_WORD(word)) insert(word, rowCount)
     },
     [rowCount]
   )

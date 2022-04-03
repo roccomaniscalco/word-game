@@ -4,7 +4,7 @@ import { arrayOf, string } from "prop-types"
 import React from "react"
 import { WORDS } from "../constants/words"
 
-const SubmitButton = ({ input, onClick }) => {
+const SubmitButton = ({ input, onSubmit }) => {
   const isAWord = WORDS.includes(input.join(""))
   const is5Letter = input.length === 5
 
@@ -12,7 +12,10 @@ const SubmitButton = ({ input, onClick }) => {
     <Button
       size="sm"
       radius="xl"
-      onClick={onClick}
+      // validate input is a word before submitting
+      onClick={() => {
+        isAWord && onSubmit(input)
+      }}
       disabled={!is5Letter}
       color={isAWord ? "blue" : "red"}
     >
@@ -23,7 +26,7 @@ const SubmitButton = ({ input, onClick }) => {
 
 SubmitButton.propTypes = {
   input: arrayOf(string).isRequired,
-  onClick: func.isRequired,
+  onSubmit: func.isRequired,
 }
 
 export default SubmitButton

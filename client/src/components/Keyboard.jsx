@@ -23,7 +23,7 @@ const KeyboardRow = ({ row, onClick, isLastRow }) => {
       {isLastRow && (
         <Grid.Col span={2}>
           <Key onClick={onClick} code="backspace">
-            <BackspaceIcon size={28} />
+            <BackspaceIcon />
           </Key>
         </Grid.Col>
       )}

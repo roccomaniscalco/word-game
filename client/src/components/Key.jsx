@@ -1,9 +1,9 @@
 import { Button, createStyles } from "@mantine/core"
 import { func, node, string } from "prop-types"
 
-const useStyles = createStyles((theme) => ({
+const useStyles = createStyles((theme, { color }) => ({
   letterContainer: {
-    backgroundColor: theme.colors.dark[5],
+    backgroundColor: color ? theme.colors[color] : theme.colors.dark[5],
 
     display: "flex",
     justifyContent: "center",
@@ -12,29 +12,31 @@ const useStyles = createStyles((theme) => ({
     height: "100%",
 
     "&:hover": {
-      backgroundColor: theme.colors.dark[4],
+      backgroundColor: color ? theme.colors[color][8] : theme.colors.dark[4],
     },
   },
 }))
 
-const Letter = ({ children, onClick, code }) => {
-  const { classes } = useStyles()
+const Key = ({ children, onClick, code, color, ...props }) => {
+  const { classes } = useStyles({ color })
 
   return (
     <Button
       onClick={() => onClick(code)}
       className={classes.letterContainer}
       uppercase
+      {...props}
     >
       {children}
     </Button>
   )
 }
 
-Letter.propTypes = {
+Key.propTypes = {
   children: node.isRequired,
   onClick: func.isRequired,
   code: string.isRequired,
+  color: string,
 }
 
-export default Letter
+export default Key

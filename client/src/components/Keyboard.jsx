@@ -1,5 +1,6 @@
 import { Grid, Stack, Title } from "@mantine/core"
 import { useElementSize } from "@mantine/hooks"
+import { bool } from "prop-types"
 import { arrayOf, func, string } from "prop-types"
 import { Backspace as BackspaceIcon } from "tabler-icons-react"
 import qwerty from "../constants/qwerty"
@@ -11,12 +12,13 @@ const firstRow = qwerty.LETTERS.slice(0, 10)
 const secondRow = qwerty.LETTERS.slice(10, 19)
 const thirdRow = qwerty.LETTERS.slice(19, 26)
 
-const KeyboardRow = ({ row, onClick, input }) => {
+const KeyboardRow = ({ row, onClick, isLastRow }) => {
+
   return (
     <Grid columns={20} gutter={5} justify="center" sx={{ height: "100%" }}>
-      {input && (
+      {isLastRow && (
         <Grid.Col span={3}>
-          <KeyEnter onClick={onClick} input={input} />
+          <KeyEnter onClick={onClick} />
         </Grid.Col>
       )}
       {row.map((letter) => (
@@ -26,7 +28,7 @@ const KeyboardRow = ({ row, onClick, input }) => {
           </Key>
         </Grid.Col>
       ))}
-      {input && (
+      {isLastRow && (
         <Grid.Col span={3}>
           <Key onClick={onClick} code="backspace">
             <BackspaceIcon />
@@ -40,23 +42,22 @@ const KeyboardRow = ({ row, onClick, input }) => {
 KeyboardRow.propTypes = {
   row: arrayOf(string).isRequired,
   onClick: func.isRequired,
-  input: arrayOf(string),
+  isLastRow: bool,
 }
 
-const Keyboard = ({ input, onClick }) => {
+const Keyboard = ({ onClick }) => {
   const { ref, width } = useElementSize()
 
   return (
     <Stack spacing={5} ref={ref} sx={{ height: width / 3, width: "100%" }}>
       <KeyboardRow row={firstRow} onClick={onClick} />
       <KeyboardRow row={secondRow} onClick={onClick} />
-      <KeyboardRow row={thirdRow} onClick={onClick} input={input} />
+      <KeyboardRow row={thirdRow} onClick={onClick} isLastRow/>
     </Stack>
   )
 }
 
 Keyboard.propTypes = {
-  input: arrayOf(string),
   onClick: func.isRequired,
 }
 

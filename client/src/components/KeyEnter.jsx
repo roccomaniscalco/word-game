@@ -1,29 +1,26 @@
-import { arrayOf, func, string } from "prop-types"
+import { func } from "prop-types"
 import {
-  AlertCircle as AlertCircleIcon,
-  ArrowForward as ArrowForwardIcon,
+    ArrowForward as ArrowForwardIcon
 } from "tabler-icons-react"
-import { IS_A_WORD } from "../constants/words"
 import Key from "./Key"
 
-const KeyEnter = ({ input, onClick }) => {
-  const isAWord = IS_A_WORD(input)
-  const is5Letter = input.length === 5
+const KeyEnter = ({ onClick }) => {
+  //   const isAWord = IS_A_WORD(input)
+  //   const is5Letter = input.length === 5
 
   return (
     <Key
       onClick={onClick}
       code="enter"
-      color={isAWord ? "blue" : "red"}
-      disabled={!is5Letter}
+      //   color={isAWord ? "blue" : "red"}
+      //   disabled={!is5Letter}
     >
-      {isAWord || !is5Letter ? <ArrowForwardIcon /> : <AlertCircleIcon />}
+      <ArrowForwardIcon />
     </Key>
   )
 }
 
 KeyEnter.propTypes = {
-  input: arrayOf(string).isRequired,
   onClick: func.isRequired,
 }
 export default KeyEnter

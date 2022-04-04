@@ -1,48 +1,30 @@
-import { useCallback, useEffect, useState } from "react"
-import { IS_A_WORD } from "../constants/words"
+import { useCallback, useEffect } from "react"
 
 // accept user input from actual keyboard and on-screen keyboard
-const useKeyboard = (onWordSubmit) => {
-  const [input, setInput] = useState([])
-
-  const append = (letter) => {
-    if (input.length < 5) setInput((prevInput) => [...prevInput, letter])
-  }
-  const pop = () => {
-    setInput((prevInput) => prevInput.slice(0, -1))
-  }
-  const submit = () => {
-    // validate input is a word before submitting
-    if (IS_A_WORD(input)) {
-      onWordSubmit(input)
-      setInput([])
-    }
-  }
-
-  const handleKeydown = ({ code }) => {
-    code = code.toLocaleLowerCase()
-    if (code === "enter") submit()
-    else if (code === "backspace") pop()
-    else if (code.includes("key")) append(code.replace("key", ""))
-  }
-
+const useKeyboard = (addTile, removeTile, submitRow) => {
   const handleKeyClick = useCallback(
     (code) => {
       code = code.toLocaleLowerCase()
-      if (code === "enter") submit()
-      else if (code === "backspace") pop()
-      else append(code)
+      if (code === "enter") submitRow()
+      else if (code === "backspace") removeTile()
+      else addTile(code)
     },
-    [submit, pop, append]
+    [addTile, removeTile, submitRow]
   )
 
+  const handleKeydown = ({ code }) => {
+    code = code.toLocaleLowerCase()
+    if (code === "enter") submitRow()
+    else if (code === "backspace") removeTile()
+    else if (code.includes("key")) addTile(code.replace("key", ""))
+  }
+  
   useEffect(() => {
     window.addEventListener("keydown", handleKeydown)
     return () => window.removeEventListener("keydown", handleKeydown)
-    // must reattach keydown listener when input changes
   }, [handleKeydown])
 
-  return { input, handleKeyClick }
+  return { handleKeyClick }
 }
 
 export default useKeyboard

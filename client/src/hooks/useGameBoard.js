@@ -50,7 +50,7 @@ const useGameBoard = () => {
   }
 
   const submitRow = () => {
-    // validate word before submitting
+    // validate word exists before submitting
     if (IS_WORD(gameBoard[rowI])) {
       const newGameBoard = [...gameBoard]
       newGameBoard[rowI] = evaluateRow(gameBoard[rowI])

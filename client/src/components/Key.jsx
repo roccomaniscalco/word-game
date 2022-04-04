@@ -8,8 +8,10 @@ const useStyles = createStyles((theme, { color }) => ({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
+
     width: "100%",
     height: "100%",
+    padding: 0,
 
     "&:hover": {
       backgroundColor: color ? theme.colors[color][8] : theme.colors.dark[3],

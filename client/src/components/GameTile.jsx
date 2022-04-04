@@ -15,9 +15,9 @@ const useStyles = createStyles((theme, { hasLetter }) => ({
     backgroundColor: theme.colors.dark[9],
     borderWidth: "2px",
     borderStyle: "solid",
-    borderColor: hasLetter ? theme.colors.dark[3] : theme.colors.dark[4],
+    borderColor: hasLetter ? theme.colors.dark[3] : theme.colors.dark[5],
   },
-  unused: { backgroundColor: theme.colors.dark[4] },
+  unused: { backgroundColor: theme.colors.dark[5] },
   used: { backgroundColor: theme.fn.darken(theme.colors.yellow[6], 0.3) },
   correct: { backgroundColor: theme.fn.darken(theme.colors.green[6], 0.3) },
 }))

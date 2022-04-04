@@ -30,7 +30,7 @@ const useGameBoard = () => {
     [rowCount]
   )
 
-  return { gameBoard, handleWordSubmit }
+  return { gameBoard, rowCount, handleWordSubmit }
 }
 
 export default useGameBoard

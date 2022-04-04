@@ -35,14 +35,14 @@ const useKeyboard = (onWordSubmit) => {
       else if (code === "backspace") pop()
       else append(code)
     },
-    [input, setInput]
+    [submit, pop, append]
   )
 
   useEffect(() => {
     window.addEventListener("keydown", handleKeydown)
     return () => window.removeEventListener("keydown", handleKeydown)
     // must reattach keydown listener when input changes
-  }, [input, setInput])
+  }, [handleKeydown])
 
   return { input, handleKeyClick }
 }

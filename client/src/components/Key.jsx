@@ -3,7 +3,7 @@ import { func, node, string } from "prop-types"
 
 const useStyles = createStyles((theme, { color }) => ({
   letterContainer: {
-    backgroundColor: color ? theme.colors[color] : theme.colors.dark[5],
+    backgroundColor: color ? theme.colors[color] : theme.colors.dark[4],
 
     display: "flex",
     justifyContent: "center",
@@ -12,7 +12,7 @@ const useStyles = createStyles((theme, { color }) => ({
     height: "100%",
 
     "&:hover": {
-      backgroundColor: color ? theme.colors[color][8] : theme.colors.dark[4],
+      backgroundColor: color ? theme.colors[color][8] : theme.colors.dark[3],
     },
   },
 }))

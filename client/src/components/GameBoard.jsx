@@ -16,7 +16,9 @@ const GameBoard = ({ gameBoard }) => {
   return (
     <SimpleGrid cols={5} spacing="xs" className={classes.board}>
       {gameBoard.map((row) =>
-        row.map((tile, i) => <GameTile letter={tile?.letter} key={i} />)
+        row.map((tile, i) => (
+          <GameTile letter={tile.letter} evaluation={tile.evaluation} key={i} />
+        ))
       )}
     </SimpleGrid>
   )

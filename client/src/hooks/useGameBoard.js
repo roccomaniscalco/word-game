@@ -31,7 +31,7 @@ const useGameBoard = () => {
   }
 
   const { handleKeyClick } = useKeyboard(addTile, removeTile, submitRow)
-  return { gameBoard, handleKeyClick }
+  return { gameBoard, currentWord: gameBoard[rowI], handleKeyClick }
 }
 
 export default useGameBoard

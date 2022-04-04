@@ -1,7 +1,6 @@
 import { Grid, Stack, Title } from "@mantine/core"
 import { useElementSize } from "@mantine/hooks"
-import { bool } from "prop-types"
-import { arrayOf, func, string } from "prop-types"
+import { func, node } from "prop-types"
 import { Backspace as BackspaceIcon } from "tabler-icons-react"
 import qwerty from "../constants/qwerty"
 import Key from "./Key"
@@ -12,37 +11,16 @@ const firstRow = qwerty.LETTERS.slice(0, 10)
 const secondRow = qwerty.LETTERS.slice(10, 19)
 const thirdRow = qwerty.LETTERS.slice(19, 26)
 
-const KeyboardRow = ({ row, onClick, isLastRow }) => {
-
+const KeyboardRow = ({ children }) => {
   return (
     <Grid columns={20} gutter={5} justify="center" sx={{ height: "100%" }}>
-      {isLastRow && (
-        <Grid.Col span={3}>
-          <KeyEnter onClick={onClick} />
-        </Grid.Col>
-      )}
-      {row.map((letter) => (
-        <Grid.Col key={letter} span={2}>
-          <Key onClick={onClick} code={letter}>
-            <Title order={4}>{letter}</Title>
-          </Key>
-        </Grid.Col>
-      ))}
-      {isLastRow && (
-        <Grid.Col span={3}>
-          <Key onClick={onClick} code="backspace">
-            <BackspaceIcon />
-          </Key>
-        </Grid.Col>
-      )}
+      {children}
     </Grid>
   )
 }
 
 KeyboardRow.propTypes = {
-  row: arrayOf(string).isRequired,
-  onClick: func.isRequired,
-  isLastRow: bool,
+  children: node,
 }
 
 const Keyboard = ({ onClick }) => {
@@ -50,9 +28,43 @@ const Keyboard = ({ onClick }) => {
 
   return (
     <Stack spacing={5} ref={ref} sx={{ height: width / 3, width: "100%" }}>
-      <KeyboardRow row={firstRow} onClick={onClick} />
-      <KeyboardRow row={secondRow} onClick={onClick} />
-      <KeyboardRow row={thirdRow} onClick={onClick} isLastRow/>
+      <KeyboardRow>
+        {firstRow.map((letter) => (
+          <Grid.Col key={letter} span={2}>
+            <Key onClick={onClick} code={letter}>
+              <Title order={4}>{letter}</Title>
+            </Key>
+          </Grid.Col>
+        ))}
+      </KeyboardRow>
+
+      <KeyboardRow>
+        {secondRow.map((letter) => (
+          <Grid.Col key={letter} span={2}>
+            <Key onClick={onClick} code={letter}>
+              <Title order={4}>{letter}</Title>
+            </Key>
+          </Grid.Col>
+        ))}
+      </KeyboardRow>
+
+      <KeyboardRow>
+        <Grid.Col span={3}>
+          <KeyEnter onClick={onClick} />
+        </Grid.Col>
+        {thirdRow.map((letter) => (
+          <Grid.Col key={letter} span={2}>
+            <Key onClick={onClick} code={letter}>
+              <Title order={4}>{letter}</Title>
+            </Key>
+          </Grid.Col>
+        ))}
+        <Grid.Col span={3}>
+          <Key onClick={onClick} code="backspace">
+            <BackspaceIcon />
+          </Key>
+        </Grid.Col>
+      </KeyboardRow>
     </Stack>
   )
 }

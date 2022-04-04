@@ -5758,7 +5758,7 @@ export const WORDS = [
   "pupal",
 ]
 
-export const IS_A_WORD = (word) => WORDS.includes(word.join(""))
+export const IS_WORD = (word) => WORDS.includes(word.join(""))
 
 export const GET_RANDOM_WORD = () => {
   const randomIndex = Math.round(Math.random() * WORDS.length)

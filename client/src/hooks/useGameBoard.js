@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { IS_WORD } from "../constants/words"
 import useKeyboard from "./useKeyboard"
 
 const useGameBoard = () => {
@@ -23,7 +24,8 @@ const useGameBoard = () => {
   }
 
   const submitRow = () => {
-    if (isFullRow && rowI < gameBoard.length - 1) {
+    // validate word before submitting
+    if (IS_WORD(gameBoard[rowI]) && rowI < gameBoard.length - 1) {
       setRowI((prevRowI) => prevRowI + 1)
     }
   }

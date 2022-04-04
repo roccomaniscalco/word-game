@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react"
+import { useState } from "react"
 import useKeyboard from "./useKeyboard"
 
 const useGameBoard = () => {

@@ -1,6 +1,6 @@
 import { Card, createStyles, Title } from "@mantine/core"
 import { string } from "prop-types"
-import { tileEvaluation } from "../constants/propTypes"
+import { letterEvaluation } from "../constants/propTypes"
 
 const useStyles = createStyles((theme, { hasLetter }) => ({
   tile: {
@@ -35,7 +35,7 @@ const GameTile = ({ letter, evaluation }) => {
 
 GameTile.propTypes = {
   letter: string.isRequired,
-  evaluation: tileEvaluation.isRequired,
+  evaluation: letterEvaluation.isRequired,
 }
 
 export default GameTile

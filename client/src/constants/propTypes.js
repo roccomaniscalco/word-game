@@ -1,6 +1,6 @@
 import { arrayOf, exact, oneOf, string } from "prop-types"
 
-export const tileEvaluation = oneOf([
+export const letterEvaluation = oneOf([
   "undetermined",
   "unused",
   "used",
@@ -10,7 +10,7 @@ export const tileEvaluation = oneOf([
 export const gameBoardRow = arrayOf(
   exact({
     letter: string.isRequired,
-    evaluation: tileEvaluation.isRequired,
+    evaluation: letterEvaluation.isRequired,
   })
 )
 

@@ -8,22 +8,19 @@ const useGameBoard = () => {
   const isFullRow = gameBoard[rowI].length === 5
   const isEmptyRow = gameBoard[rowI].length === 0
 
-  const addTile = useCallback(
-    (tile) => {
-      if (isFullRow) return
-      const newGameBoard = [...gameBoard]
-      newGameBoard[rowI].push(tile)
-      setGameBoard(newGameBoard)
-    },
-    [gameBoard, rowI]
-  )
+  const addTile = (tile) => {
+    if (isFullRow) return
+    const newGameBoard = [...gameBoard]
+    newGameBoard[rowI].push(tile)
+    setGameBoard(newGameBoard)
+  }
 
-  const removeTile = useCallback(() => {
+  const removeTile = () => {
     if (isEmptyRow) return
     const newGameBoard = [...gameBoard]
     newGameBoard[rowI].pop()
     setGameBoard(newGameBoard)
-  }, [gameBoard, rowI])
+  }
 
   const submitRow = () => {
     if (isFullRow && rowI < gameBoard.length - 1) {

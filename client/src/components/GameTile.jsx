@@ -1,4 +1,4 @@
-import { Card, createStyles, Title, Transition } from "@mantine/core"
+import { Card, createStyles, Title } from "@mantine/core"
 import { string } from "prop-types"
 import React from "react"
 
@@ -24,13 +24,7 @@ const GameTile = ({ letter }) => {
 
   return (
     <Card className={classes.tile}>
-      <Transition mounted={hasLetter} transition="pop">
-        {(styles) => (
-          <Title styles={{ ...styles }} order={2}>
-            {letter}
-          </Title>
-        )}
-      </Transition>
+      <Title order={2}>{letter}</Title>
     </Card>
   )
 }

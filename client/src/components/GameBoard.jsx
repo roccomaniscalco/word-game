@@ -10,12 +10,17 @@ const useStyles = createStyles({
   },
 })
 
+const fillGameBoard = (gameBoard) => 
+  gameBoard.map((row) => 
+    [...row, ...Array(5 - row.length).fill("") ]
+  )
+
 const GameBoard = ({ gameBoard }) => {
   const { classes } = useStyles()
 
   return (
     <SimpleGrid cols={5} spacing="xs" className={classes.board}>
-      {gameBoard.map((row) =>
+      {fillGameBoard(gameBoard).map((row) =>
         row.map((letter, i) => <GameTile letter={letter} key={i} />)
       )}
     </SimpleGrid>

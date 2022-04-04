@@ -14,7 +14,7 @@ const thirdRow = qwerty.LETTERS.slice(19, 26)
 
 const KeyboardRow = ({ children }) => {
   return (
-    <Grid columns={20} gutter={5} justify="center" sx={{ height: "100%" }}>
+    <Grid columns={20} gutter={4} justify="center" sx={{ height: "100%" }}>
       {children}
     </Grid>
   )
@@ -28,7 +28,8 @@ const Keyboard = ({ onClick, currentRow }) => {
   const { ref, width } = useElementSize()
 
   return (
-    <Stack spacing={5} ref={ref} sx={{ height: width / 3, width: "100%" }}>
+    // preserve aspect ratio 
+    <Stack spacing={4} ref={ref} sx={{ height: width / 2.8 }}>
       <KeyboardRow>
         {firstRow.map((letter) => (
           <Grid.Col key={letter} span={2}>

@@ -1,6 +1,6 @@
 import { Grid, Stack, Title } from "@mantine/core"
 import { useElementSize } from "@mantine/hooks"
-import { arrayOf, string } from "prop-types"
+import { arrayOf, shape, string } from "prop-types"
 import { func, node } from "prop-types"
 import { Backspace as BackspaceIcon } from "tabler-icons-react"
 import qwerty from "../constants/qwerty"
@@ -24,7 +24,7 @@ KeyboardRow.propTypes = {
   children: node,
 }
 
-const Keyboard = ({ onClick, currentWord }) => {
+const Keyboard = ({ onClick, currentRow }) => {
   const { ref, width } = useElementSize()
 
   return (
@@ -51,7 +51,7 @@ const Keyboard = ({ onClick, currentWord }) => {
 
       <KeyboardRow>
         <Grid.Col span={3}>
-          <KeyEnter onClick={onClick} currentWord={currentWord}/>
+          <KeyEnter onClick={onClick} currentRow={currentRow} />
         </Grid.Col>
         {thirdRow.map((letter) => (
           <Grid.Col key={letter} span={2}>
@@ -72,7 +72,12 @@ const Keyboard = ({ onClick, currentWord }) => {
 
 Keyboard.propTypes = {
   onClick: func.isRequired,
-  currentWord: arrayOf(string).isRequired,
+  currentRow: arrayOf(
+    shape({
+      letter: string.isRequired,
+      evaluation: string.isRequired,
+    })
+  ).isRequired,
 }
 
 export default Keyboard

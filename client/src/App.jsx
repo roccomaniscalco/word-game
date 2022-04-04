@@ -4,14 +4,14 @@ import Keyboard from "./components/Keyboard"
 import useGameBoard from "./hooks/useGameBoard"
 
 function App() {
-  const { gameBoard, currentWord, handleKeyClick } = useGameBoard()
+  const { gameBoard, currentRow, handleKeyClick } = useGameBoard()
 
   return (
     <AppShell padding="xs">
       <Container size="xs">
         <Stack align="center">
           <GameBoard gameBoard={gameBoard} />
-          <Keyboard currentWord={currentWord} onClick={handleKeyClick} />
+          <Keyboard currentRow={currentRow} onClick={handleKeyClick} />
         </Stack>
       </Container>
     </AppShell>

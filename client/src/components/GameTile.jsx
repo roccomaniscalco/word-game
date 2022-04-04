@@ -1,6 +1,5 @@
 import { Card, createStyles, Title } from "@mantine/core"
 import { string } from "prop-types"
-import React from "react"
 
 const useStyles = createStyles((theme, { hasLetter }) => ({
   tile: {

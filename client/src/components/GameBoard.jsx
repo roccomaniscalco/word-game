@@ -1,5 +1,5 @@
 import { createStyles, SimpleGrid } from "@mantine/core"
-import { arrayOf, string } from "prop-types"
+import { arrayOf, shape, string } from "prop-types"
 import GameTile from "./GameTile"
 
 const useStyles = createStyles({
@@ -10,25 +10,22 @@ const useStyles = createStyles({
   },
 })
 
-const fillGameBoard = (gameBoard) => 
-  gameBoard.map((row) => 
-    [...row, ...Array(5 - row.length).fill("") ]
-  )
-
 const GameBoard = ({ gameBoard }) => {
   const { classes } = useStyles()
 
   return (
     <SimpleGrid cols={5} spacing="xs" className={classes.board}>
-      {fillGameBoard(gameBoard).map((row) =>
-        row.map((letter, i) => <GameTile letter={letter} key={i} />)
+      {gameBoard.map((row) =>
+        row.map((tile, i) => <GameTile letter={tile?.letter} key={i} />)
       )}
     </SimpleGrid>
   )
 }
 
 GameBoard.propTypes = {
-  gameBoard: arrayOf(arrayOf(string)).isRequired,
+  gameBoard: arrayOf(
+    arrayOf(shape({ letter: string.isRequired, evaluation: string.isRequired }))
+  ).isRequired,
 }
 
 export default GameBoard

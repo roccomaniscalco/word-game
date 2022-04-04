@@ -55,9 +55,8 @@ const useGameBoard = () => {
       const newGameBoard = [...gameBoard]
       newGameBoard[rowI] = evaluateRow(gameBoard[rowI])
       setGameBoard(newGameBoard)
+      if (rowI < gameBoard.length - 1) setRowI((prevRowI) => prevRowI + 1)
     }
-
-    if (rowI < gameBoard.length - 1) setRowI((prevRowI) => prevRowI + 1)
   }
 
   const { handleKeyClick } = useKeyboard(addTile, removeTile, submitRow)

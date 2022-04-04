@@ -1,9 +1,10 @@
-import { arrayOf, func, shape, string } from "prop-types"
+import { func } from "prop-types"
 import {
   AlertCircle as AlertCircleIcon,
   ArrowForward as ArrowForwardIcon
 } from "tabler-icons-react"
 import { IS_WORD } from "../constants/words"
+import { gameBoardRow } from "../constants/propTypes"
 import Key from "./Key"
 
 const KeyEnter = ({ onClick, currentRow }) => {
@@ -24,11 +25,6 @@ const KeyEnter = ({ onClick, currentRow }) => {
 
 KeyEnter.propTypes = {
   onClick: func.isRequired,
-  currentRow: arrayOf(
-    shape({
-      letter: string.isRequired,
-      evaluation: string.isRequired,
-    })
-  ).isRequired,
+  currentRow: gameBoardRow.isRequired,
 }
 export default KeyEnter

@@ -1,5 +1,5 @@
 import { createStyles, SimpleGrid } from "@mantine/core"
-import { arrayOf, shape, string } from "prop-types"
+import { gameBoard } from "../constants/propTypes"
 import GameTile from "./GameTile"
 
 const useStyles = createStyles({
@@ -23,9 +23,7 @@ const GameBoard = ({ gameBoard }) => {
 }
 
 GameBoard.propTypes = {
-  gameBoard: arrayOf(
-    arrayOf(shape({ letter: string.isRequired, evaluation: string.isRequired }))
-  ).isRequired,
+  gameBoard: gameBoard.isRequired,
 }
 
 export default GameBoard

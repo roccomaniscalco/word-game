@@ -14,9 +14,15 @@ function App() {
         body: { height: "100%" },
       }}
     >
-      <Container size="xs" style={{ height: "100%" }}>
-        <Stack align="center" justify="center" style={{ height: "100%" }}>
-          <GameBoard gameBoard={gameBoard} />
+      <Container size="sm" style={{ height: "100%" }}>
+        <Stack
+          align="center"
+          justify="space-between"
+          style={{ height: "100%" }}
+        >
+          <Stack justify="center" style={{ flex: 1 }}>
+            <GameBoard gameBoard={gameBoard} />
+          </Stack>
           <Keyboard currentRow={currentRow} onClick={handleKeyClick} />
         </Stack>
       </Container>

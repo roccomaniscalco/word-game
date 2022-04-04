@@ -14,7 +14,7 @@ const useStyles = createStyles((theme, { color }) => ({
     padding: 0,
 
     "&:hover": {
-      backgroundColor: color ? theme.colors[color][8] : theme.colors.dark[3],
+      backgroundColor: color ? theme.colors[color][8] : theme.colors.dark[4],
     },
   },
 }))

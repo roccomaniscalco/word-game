@@ -6,12 +6,10 @@ const useKeyboard = (onWordSubmit) => {
   const [input, setInput] = useState([])
 
   const append = (letter) => {
-    setInput((prevGuess) =>
-      prevGuess.length < 5 ? [...prevGuess, letter] : prevGuess
-    )
+    if (input.length < 5) setInput((prevInput) => [...prevInput, letter])
   }
   const pop = () => {
-    setInput((prevGuess) => prevGuess.slice(0, -1))
+    setInput((prevInput) => prevInput.slice(0, -1))
   }
   const submit = () => {
     // validate input is a word before submitting

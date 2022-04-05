@@ -26,15 +26,15 @@ const Keyboard = ({ keys, onClick, currentRow }) => {
   const secondRow = keys.slice(10, 19)
   const thirdRow = keys.slice(19, 26)
 
-  
+  console.log(firstRow)
 
   return (
     // preserve aspect ratio
     <Stack spacing={4} ref={ref} sx={{ height: width / 2.8 }}>
       <KeyboardRow>
-        {firstRow.map(({ letter }) => (
+        {firstRow.map(({ letter, evaluation }) => (
           <Grid.Col key={letter} span={2}>
-            <Key onClick={onClick} code={letter}>
+            <Key onClick={onClick} code={letter} evaluation={evaluation}>
               <Title order={4}>{letter}</Title>
             </Key>
           </Grid.Col>
@@ -42,9 +42,9 @@ const Keyboard = ({ keys, onClick, currentRow }) => {
       </KeyboardRow>
 
       <KeyboardRow>
-        {secondRow.map(({ letter }) => (
+        {secondRow.map(({ letter, evaluation }) => (
           <Grid.Col key={letter} span={2}>
-            <Key onClick={onClick} code={letter}>
+            <Key onClick={onClick} code={letter} evaluation={evaluation}>
               <Title order={4}>{letter}</Title>
             </Key>
           </Grid.Col>
@@ -55,9 +55,9 @@ const Keyboard = ({ keys, onClick, currentRow }) => {
         <Grid.Col span={3}>
           <KeyEnter onClick={onClick} currentRow={currentRow} />
         </Grid.Col>
-        {thirdRow.map(({ letter }) => (
+        {thirdRow.map(({ letter, evaluation }) => (
           <Grid.Col key={letter} span={2}>
-            <Key onClick={onClick} code={letter}>
+            <Key onClick={onClick} code={letter} evaluation={evaluation}>
               <Title order={4}>{letter}</Title>
             </Key>
           </Grid.Col>

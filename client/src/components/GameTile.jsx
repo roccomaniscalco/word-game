@@ -17,14 +17,14 @@ const useStyles = createStyles((theme, { hasLetter }) => ({
     borderStyle: "solid",
     borderColor: hasLetter ? theme.colors.dark[3] : theme.colors.dark[5],
   },
-  unused: { backgroundColor: theme.colors.dark[5] },
+  unused: { backgroundColor: theme.colors.dark[6] },
   used: { backgroundColor: theme.fn.darken(theme.colors.yellow[6], 0.3) },
   correct: { backgroundColor: theme.fn.darken(theme.colors.green[6], 0.3) },
 }))
 
 const GameTile = ({ letter, evaluation }) => {
   const hasLetter = letter.length > 0
-  const { classes } = useStyles({ hasLetter, evaluation })
+  const { classes } = useStyles({ hasLetter })
 
   return (
     <Card className={`${classes.tile} ${classes[evaluation]}`}>

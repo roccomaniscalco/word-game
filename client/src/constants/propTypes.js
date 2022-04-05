@@ -7,6 +7,13 @@ export const letterEvaluation = oneOf([
   "correct",
 ])
 
+export const keys = arrayOf(
+  exact({
+    letter: string.isRequired,
+    evaluation: letterEvaluation.isRequired,
+  })
+)
+
 export const gameBoardRow = arrayOf(
   exact({
     letter: string.isRequired,

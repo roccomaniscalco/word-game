@@ -28,7 +28,7 @@ const evaluateRow = (currentRow) =>
     }
   })
 
-const useGameBoard = () => {
+const useGameBoard = (updateKeys) => {
   const [rowI, setRowI] = useState(0)
   const [gameBoard, setGameBoard] = useState([[], [], [], [], [], []])
 
@@ -55,6 +55,7 @@ const useGameBoard = () => {
       const newGameBoard = [...gameBoard]
       newGameBoard[rowI] = evaluateRow(gameBoard[rowI])
       setGameBoard(newGameBoard)
+      updateKeys(newGameBoard[rowI])
       if (rowI < gameBoard.length - 1) setRowI((prevRowI) => prevRowI + 1)
     }
   }

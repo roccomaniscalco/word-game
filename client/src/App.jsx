@@ -2,9 +2,11 @@ import { AppShell, Box, Center, Container, Stack } from "@mantine/core"
 import GameBoard from "./components/GameBoard"
 import Keyboard from "./components/Keyboard"
 import useGameBoard from "./hooks/useGameBoard"
+import useKeys from "./hooks/useKeys"
 
 function App() {
-  const { gameBoard, currentRow, handleKeyClick } = useGameBoard()
+  const { keys, updateKeys } = useKeys()
+  const { gameBoard, currentRow, handleKeyClick } = useGameBoard(updateKeys)
 
   return (
     <AppShell
@@ -21,11 +23,15 @@ function App() {
           justify="space-between"
           style={{ height: "100%" }}
         >
-          <Center style={{ flex: 1, width: "100%"}}>
+          <Center style={{ flex: 1, width: "100%" }}>
             <GameBoard gameBoard={gameBoard} />
           </Center>
           <Box style={{ width: "100%" }}>
-            <Keyboard currentRow={currentRow} onClick={handleKeyClick} />
+            <Keyboard
+              keys={keys}
+              currentRow={currentRow}
+              onClick={handleKeyClick}
+            />
           </Box>
         </Stack>
       </Container>

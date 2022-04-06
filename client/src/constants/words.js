@@ -1,4 +1,4 @@
-export const WORDS = [
+const WORDS = new Set([
   "which",
   "there",
   "their",
@@ -5756,12 +5756,12 @@ export const WORDS = [
   "rumba",
   "biffy",
   "pupal",
-]
+])
 
 export const IS_WORD = (row) =>
-  WORDS.includes(row.map((tile) => tile.letter).join(""))
+  WORDS.has(row.map((tile) => tile.letter).join(""))
 
 export const GET_RANDOM_WORD = () => {
   const randomIndex = Math.round(Math.random() * WORDS.length)
-  return WORDS[randomIndex].split("")
+  return Array.from(WORDS)[randomIndex].split("")
 }

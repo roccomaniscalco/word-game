@@ -26,8 +26,6 @@ const Keyboard = ({ keys, onClick, currentRow }) => {
   const secondRow = keys.slice(10, 19)
   const thirdRow = keys.slice(19, 26)
 
-  console.log(firstRow)
-
   return (
     // preserve aspect ratio
     <Stack spacing={4} ref={ref} sx={{ height: width / 2.8 }}>

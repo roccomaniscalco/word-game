@@ -2,14 +2,14 @@ import { useState } from "react"
 import { evals, LETTERS } from "../constants/qwerty"
 
 const useKeys = () => {
-  const [keys, setKeys] = useState(() =>
+  const [keys, setKeys] = useState(
     LETTERS.reduce((keys, letter) => ({ ...keys, [letter]: evals.TBD }), {})
   )
 
-  // update keys to reflect evaluations in row
-  const updateKeys = (row) => {
+  // update keys to reflect evaluations in currentRow
+  const updateKeys = (currentRow) => {
     const newKeys = { ...keys }
-    row.forEach(({ letter, evaluation }) => {
+    currentRow.forEach(({ letter, evaluation }) => {
       if (evaluation === evals.CORRECT) newKeys[letter] = evals.CORRECT
       else if (evaluation === evals.USED && newKeys[letter] !== evals.CORRECT)
         newKeys[letter] = evals.USED

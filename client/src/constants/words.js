@@ -5763,5 +5763,5 @@ export const IS_WORD = (row) =>
 
 export const GET_RANDOM_WORD = () => {
   const randomIndex = Math.round(Math.random() * WORDS.length)
-  return WORDS[randomIndex].split("")
+  return WORDS[randomIndex]
 }

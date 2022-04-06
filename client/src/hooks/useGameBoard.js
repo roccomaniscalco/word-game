@@ -15,7 +15,7 @@ const useGameBoard = (updateKeys) => {
   const { correctWord, isRoundOver, updateRound } = useRound()
   const [rowI, setRowI] = useState(0)
   const [gameBoard, setGameBoard] = useState([[], [], [], [], [], []])
-  
+
   const isFullRow = gameBoard[rowI].length === 5
   const isEmptyRow = gameBoard[rowI].length === 0
 

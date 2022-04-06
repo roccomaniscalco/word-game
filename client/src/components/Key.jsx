@@ -6,6 +6,9 @@ import { evals } from "../constants/qwerty"
 const useStyles = createStyles((theme) => ({
   letterContainer: {
     backgroundColor: theme.colors.dark[4],
+    "&:hover": {
+      backgroundColor: theme.colors.dark[4],
+    },
 
     display: "flex",
     justifyContent: "center",
@@ -15,9 +18,10 @@ const useStyles = createStyles((theme) => ({
     height: "100%",
     padding: 0,
 
-    "&:hover": {
-      backgroundColor: theme.colors.dark[4],
-    },
+    // delay color change until after gameTiles are flipped
+    transitionProperty: "background-color",
+    transitionDuration: "0ms",
+    transitionDelay: "500ms",
   },
 
   [evals.UNUSED]: {

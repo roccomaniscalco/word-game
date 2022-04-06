@@ -21,6 +21,7 @@ const KeyEnter = ({ onClick, currentRow }) => {
         "&:hover": {
           backgroundColor: isAWord ? theme.colors.blue : theme.colors.red,
         },
+        transition: "none"
       })}
     >
       {isAWord || !is5Letter ? <ArrowForwardIcon /> : <AlertCircleIcon />}

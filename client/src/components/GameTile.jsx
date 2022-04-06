@@ -1,5 +1,6 @@
 import { Card, createStyles, keyframes, Title } from "@mantine/core"
 import { string } from "prop-types"
+import { memo } from "react"
 import { letterEvaluation } from "../constants/propTypes"
 import { evals } from "../constants/qwerty"
 
@@ -29,9 +30,9 @@ const useStyles = createStyles((theme, { hasLetter }) => ({
     borderStyle: "solid",
     borderColor: hasLetter ? theme.colors.dark[3] : theme.colors.dark[4],
 
-    animation: hasLetter ? `${pop} 100ms ease-in-out` : undefined,
-
-    // change color and border halfway into flipIn animation
+    animation: hasLetter ? `${pop} 100ms` : undefined,
+    
+    // delay color and border change until halfway into flip animation
     transitionProperty: "border-width, background-color",
     transitionDuration: "0ms",
     transitionDelay: "250ms",
@@ -71,4 +72,4 @@ GameTile.propTypes = {
   evaluation: letterEvaluation.isRequired,
 }
 
-export default GameTile
+export default memo(GameTile)

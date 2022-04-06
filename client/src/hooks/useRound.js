@@ -1,16 +1,17 @@
-import { useRef, useState } from "react"
+import { useState } from "react"
+import { GET_RANDOM_WORD } from "../constants/words"
 
 const useRound = () => {
-  const correctWord = useRef("store")
+  const [correctWord] = useState(GET_RANDOM_WORD())
   const [isRoundOver, setIsRoundOver] = useState(false)
 
   const updateRound = (gameBoard, currentRow) => {
-    const currentWord = currentRow.map(({ letter }) => letter).join("")
-    if (currentWord === correctWord.current) setIsRoundOver(true)
+    const currentWord = currentRow.map(({ letter }) => letter)
+    if (currentWord === correctWord) setIsRoundOver(true)
     else if (gameBoard[5].length !== 0) setIsRoundOver(true)
   }
 
-  return { isRoundOver, updateRound }
+  return { correctWord, isRoundOver, updateRound }
 }
 
 export default useRound

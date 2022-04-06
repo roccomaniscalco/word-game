@@ -4,9 +4,7 @@ import { IS_WORD } from "../constants/words"
 import useKeyboard from "./useKeyboard"
 import useRound from "./useRound"
 
-const correctWord = "store"
-
-const evaluateRow = (currentRow) =>
+const evaluateRow = (currentRow, correctWord) =>
   currentRow.map(({ letter }, i) => {
     if (correctWord[i] === letter) return { letter, evaluation: evals.CORRECT }
     if (correctWord.includes(letter)) return { letter, evaluation: evals.USED }
@@ -14,9 +12,10 @@ const evaluateRow = (currentRow) =>
   })
 
 const useGameBoard = (updateKeys) => {
-  const { isRoundOver, updateRound } = useRound()
+  const { correctWord, isRoundOver, updateRound } = useRound()
   const [rowI, setRowI] = useState(0)
   const [gameBoard, setGameBoard] = useState([[], [], [], [], [], []])
+  
   const isFullRow = gameBoard[rowI].length === 5
   const isEmptyRow = gameBoard[rowI].length === 0
 
@@ -37,7 +36,7 @@ const useGameBoard = (updateKeys) => {
   const submitRow = () => {
     if (!IS_WORD(gameBoard[rowI]) || isRoundOver) return
     const newGameBoard = [...gameBoard]
-    newGameBoard[rowI] = evaluateRow(gameBoard[rowI])
+    newGameBoard[rowI] = evaluateRow(gameBoard[rowI], correctWord)
 
     setGameBoard(newGameBoard)
     updateKeys(newGameBoard[rowI])
@@ -48,7 +47,7 @@ const useGameBoard = (updateKeys) => {
 
   const { handleKeyClick } = useKeyboard(addTile, removeTile, submitRow)
   return {
-    gameBoard: gameBoard,
+    gameBoard,
     currentRow: isRoundOver ? [] : gameBoard[rowI],
     handleKeyClick,
   }

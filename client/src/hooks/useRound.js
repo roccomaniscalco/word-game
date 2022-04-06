@@ -10,8 +10,6 @@ const useRound = () => {
     else if (gameBoard[5].length !== 0) setIsRoundOver(true)
   }
 
-  console.log(isRoundOver)
-
   return { correctWord, isRoundOver, updateRound }
 }
 

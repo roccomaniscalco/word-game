@@ -7,7 +7,7 @@ const useRound = () => {
 
   const updateRound = (gameBoard, currentRow) => {
     const currentWord = currentRow.map(({ letter }) => letter)
-    if (currentWord === correctWord) setIsRoundOver(true)
+    if (currentWord === correctWord.join("")) setIsRoundOver(true)
     else if (gameBoard[5].length !== 0) setIsRoundOver(true)
   }
 

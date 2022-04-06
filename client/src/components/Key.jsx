@@ -3,9 +3,9 @@ import { func, node, string } from "prop-types"
 import { letterEvaluation } from "../constants/propTypes"
 import { evals } from "../constants/qwerty"
 
-const useStyles = createStyles((theme, { color }) => ({
+const useStyles = createStyles((theme) => ({
   letterContainer: {
-    backgroundColor: theme.colors[color] || theme.colors.dark[4],
+    backgroundColor: theme.colors.dark[4],
 
     display: "flex",
     justifyContent: "center",
@@ -14,19 +14,34 @@ const useStyles = createStyles((theme, { color }) => ({
     width: "100%",
     height: "100%",
     padding: 0,
+
+    "&:hover": {
+      backgroundColor: theme.colors.dark[4],
+    },
   },
 
-  [evals.UNUSED]: { backgroundColor: theme.colors.dark[6] },
+  [evals.UNUSED]: {
+    backgroundColor: theme.colors.dark[6],
+    "&:hover": {
+      backgroundColor: theme.colors.dark[6],
+    },
+  },
   [evals.USED]: {
     backgroundColor: theme.fn.darken(theme.colors.yellow[6], 0.3),
+    "&:hover": {
+      backgroundColor: theme.fn.darken(theme.colors.yellow[6], 0.3),
+    },
   },
   [evals.CORRECT]: {
     backgroundColor: theme.fn.darken(theme.colors.green[6], 0.3),
+    "&:hover": {
+      backgroundColor: theme.fn.darken(theme.colors.green[6], 0.3),
+    },
   },
 }))
 
-const Key = ({ children, onClick, code, color, evaluation, ...props }) => {
-  const { classes } = useStyles({ color })
+const Key = ({ children, onClick, code, evaluation, ...props }) => {
+  const { classes } = useStyles()
 
   return (
     <Button

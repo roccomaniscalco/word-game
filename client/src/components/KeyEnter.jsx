@@ -1,7 +1,7 @@
 import { func } from "prop-types"
 import {
   AlertCircle as AlertCircleIcon,
-  ArrowForward as ArrowForwardIcon
+  ArrowForward as ArrowForwardIcon,
 } from "tabler-icons-react"
 import { IS_WORD } from "../constants/words"
 import { gameBoardRow } from "../constants/propTypes"
@@ -15,8 +15,13 @@ const KeyEnter = ({ onClick, currentRow }) => {
     <Key
       onClick={onClick}
       code="enter"
-      color={isAWord ? "blue" : "red"}
       disabled={!is5Letter}
+      sx={(theme) => ({
+        backgroundColor: isAWord ? theme.colors.blue : theme.colors.red,
+        "&:hover": {
+          backgroundColor: isAWord ? theme.colors.blue : theme.colors.red,
+        },
+      })}
     >
       {isAWord || !is5Letter ? <ArrowForwardIcon /> : <AlertCircleIcon />}
     </Key>

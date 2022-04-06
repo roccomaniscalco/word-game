@@ -28,7 +28,7 @@ const GameBoard = ({ gameBoard }) => {
       cols={5}
       spacing={6}
       className={classes.board}
-      sx={{ height: width * (6 / 5) }} // preserve aspect ratio
+      style={{ height: width * (6 / 5) }} // preserve aspect ratio
       ref={ref}
     >
       {fillGameBoard(gameBoard).map((row) =>

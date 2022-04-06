@@ -19,7 +19,7 @@ const Keyboard = ({ keys, onClick, currentRow }) => {
       columns={20}
       gutter={4}
       justify="center"
-      sx={{ height: width / 2.8 }} // preserve aspect ratio
+      style={{ height: width / 2.8 }} // preserve aspect ratio
       ref={ref}
     >
       {firstRow.map(({ letter, evaluation }) => (

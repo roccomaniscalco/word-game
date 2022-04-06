@@ -1,6 +1,7 @@
 import { Card, createStyles, Title } from "@mantine/core"
 import { string } from "prop-types"
 import { letterEvaluation } from "../constants/propTypes"
+import { evals } from "../constants/qwerty"
 
 const useStyles = createStyles((theme, { hasLetter }) => ({
   tile: {
@@ -11,15 +12,15 @@ const useStyles = createStyles((theme, { hasLetter }) => ({
     justifyContent: "center",
   },
 
-  undetermined: {
+  [evals.TBD]: {
     backgroundColor: theme.colors.dark[9],
     borderWidth: "2px",
     borderStyle: "solid",
     borderColor: hasLetter ? theme.colors.dark[3] : theme.colors.dark[5],
   },
-  unused: { backgroundColor: theme.colors.dark[6] },
-  used: { backgroundColor: theme.fn.darken(theme.colors.yellow[6], 0.3) },
-  correct: { backgroundColor: theme.fn.darken(theme.colors.green[6], 0.3) },
+  [evals.UNUSED]: { backgroundColor: theme.colors.dark[6] },
+  [evals.USED]: { backgroundColor: theme.fn.darken(theme.colors.yellow[6], 0.3) },
+  [evals.CORRECT]: { backgroundColor: theme.fn.darken(theme.colors.green[6], 0.3) },
 }))
 
 const GameTile = ({ letter, evaluation }) => {

@@ -1,4 +1,4 @@
-const LETTERS = [
+export const LETTERS = [
   "q",
   "w",
   "e",
@@ -27,8 +27,9 @@ const LETTERS = [
   "m",
 ]
 
-const qwerty = {
-  LETTERS
+export const evals = {
+  CORRECT: "correct",
+  USED: "used",
+  UNUSED: "unused",
+  TBD: "tbd",
 }
-
-export default qwerty

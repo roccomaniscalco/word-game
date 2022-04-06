@@ -1,11 +1,7 @@
 import { arrayOf, exact, oneOf, string } from "prop-types"
+import { evals } from "./qwerty"
 
-export const letterEvaluation = oneOf([
-  "undetermined",
-  "unused",
-  "used",
-  "correct",
-])
+export const letterEvaluation = oneOf(Object.values(evals))
 
 export const keys = arrayOf(
   exact({

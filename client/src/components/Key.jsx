@@ -1,6 +1,7 @@
 import { Button, createStyles } from "@mantine/core"
 import { func, node, string } from "prop-types"
 import { letterEvaluation } from "../constants/propTypes"
+import { evals } from "../constants/qwerty"
 
 const useStyles = createStyles((theme, { color }) => ({
   letterContainer: {
@@ -15,9 +16,13 @@ const useStyles = createStyles((theme, { color }) => ({
     padding: 0,
   },
 
-  unused: { backgroundColor: theme.colors.dark[6] },
-  used: { backgroundColor: theme.fn.darken(theme.colors.yellow[6], 0.3) },
-  correct: { backgroundColor: theme.fn.darken(theme.colors.green[6], 0.3) },
+  [evals.UNUSED]: { backgroundColor: theme.colors.dark[6] },
+  [evals.USED]: {
+    backgroundColor: theme.fn.darken(theme.colors.yellow[6], 0.3),
+  },
+  [evals.CORRECT]: {
+    backgroundColor: theme.fn.darken(theme.colors.green[6], 0.3),
+  },
 }))
 
 const Key = ({ children, onClick, code, color, evaluation, ...props }) => {

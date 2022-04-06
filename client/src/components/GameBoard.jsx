@@ -1,6 +1,7 @@
 import { createStyles, SimpleGrid } from "@mantine/core"
 import { useElementSize } from "@mantine/hooks"
 import { gameBoard } from "../constants/propTypes"
+import { evals } from "../constants/qwerty"
 import GameTile from "./GameTile"
 
 const useStyles = createStyles({
@@ -10,6 +11,13 @@ const useStyles = createStyles({
     gridTemplateRows: "repeat(6, 1fr)",
   },
 })
+
+// inject empty tiles to fill out gameBoard as 5x6 matrix
+const fillGameBoard = (gameBoard) =>
+  gameBoard.map((row) => [
+    ...row,
+    ...Array(5 - row.length).fill({ letter: "", evaluation: evals.TBD }),
+  ])
 
 const GameBoard = ({ gameBoard }) => {
   const { classes } = useStyles()
@@ -23,7 +31,7 @@ const GameBoard = ({ gameBoard }) => {
       sx={{ height: width * (6 / 5) }} // preserve aspect ratio
       ref={ref}
     >
-      {gameBoard.map((row) =>
+      {fillGameBoard(gameBoard).map((row) =>
         row.map((tile, i) => (
           <GameTile letter={tile.letter} evaluation={tile.evaluation} key={i} />
         ))

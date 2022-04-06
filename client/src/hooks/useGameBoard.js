@@ -6,13 +6,6 @@ import useRound from "./useRound"
 
 const correctWord = "store"
 
-// inject empty tiles to fill out gameBoard as 5x6 matrix
-const fillGameBoard = (gameBoard) =>
-  gameBoard.map((row) => [
-    ...row,
-    ...Array(5 - row.length).fill({ letter: "", evaluation: evals.TBD }),
-  ])
-
 const evaluateRow = (currentRow) =>
   currentRow.map(({ letter }, i) => {
     if (correctWord[i] === letter) return { letter, evaluation: evals.CORRECT }
@@ -55,7 +48,7 @@ const useGameBoard = (updateKeys) => {
 
   const { handleKeyClick } = useKeyboard(addTile, removeTile, submitRow)
   return {
-    gameBoard: fillGameBoard(gameBoard),
+    gameBoard: gameBoard,
     currentRow: isRoundOver ? [] : gameBoard[rowI],
     handleKeyClick,
   }

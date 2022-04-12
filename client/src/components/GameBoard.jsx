@@ -33,6 +33,7 @@ const GameBoard = ({ gameBoard }) => {
     >
       {fillGameBoard(gameBoard).map((row) =>
         row.map((tile, i) => (
+          // acceptable use of index for key since row is a consistent size
           <GameTile letter={tile.letter} evaluation={tile.evaluation} key={i} />
         ))
       )}

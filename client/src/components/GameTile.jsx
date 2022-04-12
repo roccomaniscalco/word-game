@@ -4,14 +4,14 @@ import { memo } from "react"
 import { letterEvaluation } from "../constants/propTypes"
 import { evals } from "../constants/qwerty"
 
-// plays when evaluation is revealed
+// plays when evaluation is not "tbd"
 const flip = keyframes({
   "0%": { transform: "rotateX(0)" },
   "50%": { transform: "rotateX(-90deg)" },
   "100%": { transform: "rotateX(0)" },
 })
 
-// plays when letter is typed
+// plays when letter is not an empty string
 const pop = keyframes({
   "0%": { transform: "scale(0.8)", opacity: 0 },
   "40%": { transform: "scale(1.1)", opacity: 1 },
@@ -57,8 +57,7 @@ const useStyles = createStyles((theme, { hasLetter }) => ({
 }))
 
 const GameTile = ({ letter, evaluation }) => {
-  const hasLetter = letter.length > 0
-  const { classes } = useStyles({ hasLetter })
+  const { classes } = useStyles({ hasLetter: Boolean(letter) })
 
   return (
     <Card className={`${classes.tile} ${classes[evaluation]}`}>

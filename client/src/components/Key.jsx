@@ -50,7 +50,8 @@ const Key = ({ onClick, code, Icon, evaluation, ...props }) => {
 
   return (
     <Button
-      onClick={() => onClick(code)}
+      value={code}
+      onClick={onClick}
       className={`${classes.letterContainer} ${classes[evaluation]}`}
       uppercase
       {...props}

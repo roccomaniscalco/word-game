@@ -7,10 +7,10 @@ import useKeys from "./hooks/useKeys"
 import useRound from "./hooks/useRound"
 
 function App() {
-  const { correctWord, isRoundOver, updateRound } = useRound()
+  const { isRoundOver, evaluateRow, updateRound } = useRound()
   const { keys, updateKeys } = useKeys()
   const { gameBoard, currentRow, addTile, removeTile, submitRow } =
-    useGameBoard(correctWord, isRoundOver, updateRound, updateKeys)
+    useGameBoard(isRoundOver, evaluateRow, updateRound, updateKeys)
   const { handleKeyClick } = useKeyboard(addTile, removeTile, submitRow)
 
   return (

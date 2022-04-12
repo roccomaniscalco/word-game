@@ -8,7 +8,7 @@ const useKeyboard = (addTile, removeTile, submitRow) => {
     if (code === "enter") submitRow()
     else if (code === "backspace") removeTile()
     else addTile(code)
-  }, []) // unsafe empty dependency array for perf boost
+  }, [addTile, removeTile, submitRow])
 
   const handleKeydown = ({ code }) => {
     code = code.toLocaleLowerCase()

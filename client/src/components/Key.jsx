@@ -1,5 +1,6 @@
-import { Button, createStyles } from "@mantine/core"
-import { func, node, string } from "prop-types"
+import { Button, createStyles, Title } from "@mantine/core"
+import { elementType, func, string } from "prop-types"
+import { memo } from "react"
 import { letterEvaluation } from "../constants/propTypes"
 import { evals } from "../constants/qwerty"
 
@@ -44,7 +45,7 @@ const useStyles = createStyles((theme) => ({
   },
 }))
 
-const Key = ({ children, onClick, code, evaluation, ...props }) => {
+const Key = ({ onClick, code, Icon, evaluation, ...props }) => {
   const { classes } = useStyles()
 
   return (
@@ -54,17 +55,16 @@ const Key = ({ children, onClick, code, evaluation, ...props }) => {
       uppercase
       {...props}
     >
-      {children}
+      {Icon ? <Icon /> : <Title order={4}>{code}</Title>}
     </Button>
   )
 }
 
 Key.propTypes = {
-  children: node.isRequired,
   onClick: func.isRequired,
   code: string.isRequired,
-  color: string,
   evaluation: letterEvaluation,
+  Icon: elementType,
 }
 
-export default Key
+export default memo(Key)

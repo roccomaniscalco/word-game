@@ -16,16 +16,15 @@ const KeyEnter = ({ onClick, currentRow }) => {
       onClick={onClick}
       code="enter"
       disabled={!is5Letter}
+      Icon={isAWord || !is5Letter ? ArrowForwardIcon : AlertCircleIcon}
       sx={(theme) => ({
         backgroundColor: isAWord ? theme.colors.blue : theme.colors.red,
         "&:hover": {
           backgroundColor: isAWord ? theme.colors.blue : theme.colors.red,
         },
-        transition: "none"
+        transition: "none",
       })}
-    >
-      {isAWord || !is5Letter ? <ArrowForwardIcon /> : <AlertCircleIcon />}
-    </Key>
+    />
   )
 }
 

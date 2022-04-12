@@ -1,4 +1,4 @@
-import { Grid, Title } from "@mantine/core"
+import { Grid } from "@mantine/core"
 import { useElementSize } from "@mantine/hooks"
 import { func } from "prop-types"
 import { Backspace as BackspaceIcon } from "tabler-icons-react"
@@ -24,17 +24,13 @@ const Keyboard = ({ keys, onClick, currentRow }) => {
     >
       {firstRow.map(({ letter, evaluation }) => (
         <Grid.Col key={letter} span={2}>
-          <Key onClick={onClick} code={letter} evaluation={evaluation}>
-            <Title order={4}>{letter}</Title>
-          </Key>
+          <Key onClick={onClick} code={letter} evaluation={evaluation}/>
         </Grid.Col>
       ))}
 
       {secondRow.map(({ letter, evaluation }) => (
         <Grid.Col key={letter} span={2}>
-          <Key onClick={onClick} code={letter} evaluation={evaluation}>
-            <Title order={4}>{letter}</Title>
-          </Key>
+          <Key onClick={onClick} code={letter} evaluation={evaluation}/>
         </Grid.Col>
       ))}
 
@@ -44,16 +40,12 @@ const Keyboard = ({ keys, onClick, currentRow }) => {
 
       {thirdRow.map(({ letter, evaluation }) => (
         <Grid.Col key={letter} span={2}>
-          <Key onClick={onClick} code={letter} evaluation={evaluation}>
-            <Title order={4}>{letter}</Title>
-          </Key>
+          <Key onClick={onClick} code={letter} evaluation={evaluation} />
         </Grid.Col>
       ))}
 
       <Grid.Col span={3}>
-        <Key onClick={onClick} code="backspace">
-          <BackspaceIcon />
-        </Key>
+        <Key onClick={onClick} code="backspace" Icon={BackspaceIcon} />
       </Grid.Col>
     </Grid>
   )

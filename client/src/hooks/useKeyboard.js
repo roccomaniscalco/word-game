@@ -1,13 +1,14 @@
 import { useEffect } from "react"
+import { useCallback } from "react"
 
 // accept user input from actual keyboard and on-screen keyboard
 const useKeyboard = (addTile, removeTile, submitRow) => {
-  const handleKeyClick = (code) => {
+  const handleKeyClick = useCallback((code) => {
     code = code.toLocaleLowerCase()
     if (code === "enter") submitRow()
     else if (code === "backspace") removeTile()
     else addTile(code)
-  }
+  }, []) // unsafe empty dependency array for perf boost
 
   const handleKeydown = ({ code }) => {
     code = code.toLocaleLowerCase()

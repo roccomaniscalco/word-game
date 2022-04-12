@@ -22,7 +22,7 @@ const useStyles = createStyles((theme) => ({
     // delay color change until after gameTiles are flipped
     transitionProperty: "background-color",
     transitionDuration: "0ms",
-    transitionDelay: "500ms",
+    transitionDelay: "1250ms",
   },
 
   [evals.UNUSED]: {

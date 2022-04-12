@@ -1,4 +1,5 @@
 import { Card, createStyles, keyframes, Title } from "@mantine/core"
+import { number } from "prop-types"
 import { string } from "prop-types"
 import { memo } from "react"
 import { letterEvaluation } from "../constants/propTypes"
@@ -17,7 +18,7 @@ const pop = keyframes({
   "40%": { transform: "scale(1.1)", opacity: 1 },
 })
 
-const useStyles = createStyles((theme, { hasLetter }) => ({
+const useStyles = createStyles((theme, { hasLetter, colI }) => ({
   tile: {
     color: theme.white,
     textTransform: "uppercase",
@@ -31,11 +32,11 @@ const useStyles = createStyles((theme, { hasLetter }) => ({
     borderColor: hasLetter ? theme.colors.dark[3] : theme.colors.dark[4],
 
     animation: hasLetter ? `${pop} 100ms` : undefined,
-    
+
     // delay color and border change until halfway into flip animation
     transitionProperty: "border-width, background-color",
     transitionDuration: "0ms",
-    transitionDelay: "250ms",
+    transitionDelay: `${colI * 200 + 250}ms`,
   },
 
   [evals.TBD]: {
@@ -44,20 +45,20 @@ const useStyles = createStyles((theme, { hasLetter }) => ({
   },
   [evals.UNUSED]: {
     backgroundColor: theme.colors.dark[6],
-    animation: `${flip} 500ms ease-in-out`,
+    animation: `${flip} 500ms ease-in-out ${colI * 200}ms`,
   },
   [evals.USED]: {
     backgroundColor: theme.fn.darken(theme.colors.yellow[6], 0.3),
-    animation: `${flip} 500ms ease-in-out`,
+    animation: `${flip} 500ms ease-in-out ${colI * 200}ms`,
   },
   [evals.CORRECT]: {
     backgroundColor: theme.fn.darken(theme.colors.green[6], 0.3),
-    animation: `${flip} 500ms ease-in-out`,
+    animation: `${flip} 500ms ease-in-out ${colI * 200}ms`,
   },
 }))
 
-const GameTile = ({ letter, evaluation }) => {
-  const { classes } = useStyles({ hasLetter: Boolean(letter) })
+const GameTile = ({ letter, evaluation, colI }) => {
+  const { classes } = useStyles({ hasLetter: Boolean(letter), colI })
 
   return (
     <Card className={`${classes.tile} ${classes[evaluation]}`}>
@@ -69,6 +70,7 @@ const GameTile = ({ letter, evaluation }) => {
 GameTile.propTypes = {
   letter: string.isRequired,
   evaluation: letterEvaluation.isRequired,
+  colI: number.isRequired,
 }
 
 export default memo(GameTile)

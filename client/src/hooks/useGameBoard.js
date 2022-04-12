@@ -2,10 +2,18 @@ import { useState } from "react"
 import { evals } from "../constants/qwerty"
 import { IS_WORD } from "../constants/words"
 
-const useGameBoard = (isRoundOver, evaluateRow, updateRound, updateKeys) => {
+const evaluateRow = (currentRow, correctWord) =>
+  currentRow.map(({ letter }, i) => {
+    if (correctWord.split("")[i] === letter)
+      return { letter, evaluation: evals.CORRECT }
+    if (correctWord.split("").includes(letter))
+      return { letter, evaluation: evals.USED }
+    return { letter, evaluation: evals.UNUSED }
+  })
+
+const useGameBoard = (isRoundOver, correctWord, updateRound, updateKeys) => {
   const [rowI, setRowI] = useState(0)
   const [gameBoard, setGameBoard] = useState([[], [], [], [], [], []])
-
   const isFullRow = gameBoard[rowI].length === 5
   const isEmptyRow = gameBoard[rowI].length === 0
 
@@ -26,11 +34,11 @@ const useGameBoard = (isRoundOver, evaluateRow, updateRound, updateKeys) => {
   const submitRow = () => {
     if (!IS_WORD(gameBoard[rowI]) || isRoundOver) return
     const newGameBoard = [...gameBoard]
-    newGameBoard[rowI] = evaluateRow(gameBoard[rowI])
-
+    newGameBoard[rowI] = evaluateRow(gameBoard[rowI], correctWord)
     setGameBoard(newGameBoard)
+
     updateKeys(newGameBoard[rowI])
-    updateRound(gameBoard, gameBoard[rowI])
+    updateRound(newGameBoard, newGameBoard[rowI])
 
     if (rowI < gameBoard.length - 1) setRowI((prevRowI) => prevRowI + 1)
   }
@@ -40,7 +48,7 @@ const useGameBoard = (isRoundOver, evaluateRow, updateRound, updateKeys) => {
     currentRow: isRoundOver ? [] : gameBoard[rowI],
     addTile,
     removeTile,
-    submitRow
+    submitRow,
   }
 }
 

@@ -6,8 +6,10 @@ import useRound from "./useRound"
 
 const evaluateRow = (currentRow, correctWord) =>
   currentRow.map(({ letter }, i) => {
-    if (correctWord[i] === letter) return { letter, evaluation: evals.CORRECT }
-    if (correctWord.includes(letter)) return { letter, evaluation: evals.USED }
+    if (correctWord.split("")[i] === letter)
+      return { letter, evaluation: evals.CORRECT }
+    if (correctWord.split("").includes(letter))
+      return { letter, evaluation: evals.USED }
     return { letter, evaluation: evals.UNUSED }
   })
 

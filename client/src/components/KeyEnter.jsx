@@ -3,8 +3,8 @@ import {
   AlertCircle as AlertCircleIcon,
   ArrowForward as ArrowForwardIcon,
 } from "tabler-icons-react"
-import { IS_WORD } from "../constants/words"
 import { gameBoardRow } from "../constants/propTypes"
+import { IS_WORD } from "../constants/words"
 import Key from "./Key"
 
 const KeyEnter = ({ onClick, currentRow }) => {

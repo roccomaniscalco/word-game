@@ -2,11 +2,16 @@ import { AppShell, Box, Center, Container, Stack } from "@mantine/core"
 import GameBoard from "./components/GameBoard"
 import Keyboard from "./components/Keyboard"
 import useGameBoard from "./hooks/useGameBoard"
+import useKeyboard from "./hooks/useKeyboard"
 import useKeys from "./hooks/useKeys"
+import useRound from "./hooks/useRound"
 
 function App() {
+  const { correctWord, isRoundOver, updateRound } = useRound()
   const { keys, updateKeys } = useKeys()
-  const { gameBoard, currentRow, handleKeyClick } = useGameBoard(updateKeys)
+  const { gameBoard, currentRow, addTile, removeTile, submitRow } =
+    useGameBoard(correctWord, isRoundOver, updateRound, updateKeys)
+  const { handleKeyClick } = useKeyboard(addTile, removeTile, submitRow)
 
   return (
     <AppShell

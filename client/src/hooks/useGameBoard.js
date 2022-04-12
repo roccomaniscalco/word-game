@@ -1,8 +1,6 @@
 import { useState } from "react"
 import { evals } from "../constants/qwerty"
 import { IS_WORD } from "../constants/words"
-import useKeyboard from "./useKeyboard"
-import useRound from "./useRound"
 
 const evaluateRow = (currentRow, correctWord) =>
   currentRow.map(({ letter }, i) => {
@@ -13,8 +11,7 @@ const evaluateRow = (currentRow, correctWord) =>
     return { letter, evaluation: evals.UNUSED }
   })
 
-const useGameBoard = (updateKeys) => {
-  const { correctWord, isRoundOver, updateRound } = useRound()
+const useGameBoard = (correctWord, isRoundOver, updateRound, updateKeys) => {
   const [rowI, setRowI] = useState(0)
   const [gameBoard, setGameBoard] = useState([[], [], [], [], [], []])
 
@@ -47,11 +44,12 @@ const useGameBoard = (updateKeys) => {
     if (rowI < gameBoard.length - 1) setRowI((prevRowI) => prevRowI + 1)
   }
 
-  const { handleKeyClick } = useKeyboard(addTile, removeTile, submitRow)
   return {
     gameBoard,
     currentRow: isRoundOver ? [] : gameBoard[rowI],
-    handleKeyClick,
+    addTile,
+    removeTile,
+    submitRow
   }
 }
 

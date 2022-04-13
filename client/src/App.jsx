@@ -1,7 +1,14 @@
 import { AppShell } from "@mantine/core"
+import { useState } from "react"
 import Wordinator from "./components/Wordinator"
 
 function App() {
+  const [key, setKey] = useState()
+  // change key to rerender Wordinator and reset its state
+  const resetWordinator = () => {
+    setKey((prevKey) => !prevKey)
+  }
+
   return (
     <AppShell
       padding="xs"
@@ -11,7 +18,7 @@ function App() {
         overflow: "hidden",
       }}
     >
-      <Wordinator />
+      <Wordinator resetWordinator={resetWordinator} key={key} />
     </AppShell>
   )
 }

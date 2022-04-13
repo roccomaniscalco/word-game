@@ -14,6 +14,8 @@ const useRound = () => {
   return {
     correctWord,
     isRoundOver: hasWon || hasLost,
+    hasWon,
+    hasLost,
     updateRound,
   }
 }

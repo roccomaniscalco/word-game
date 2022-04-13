@@ -1,6 +1,7 @@
 import { Box, Center, Container, Stack } from "@mantine/core"
 import { func } from "prop-types"
 import React from "react"
+import { status } from "../hooks/useRound"
 import useWordinator from "../hooks/useWordinator"
 import GameBoard from "./GameBoard"
 import Keyboard from "./Keyboard"
@@ -19,11 +20,13 @@ const Wordinator = ({ startNewRound }) => {
   return (
     <Container size="xs" style={{ height: "100%" }}>
       <Stack align="center" justify="space-between" style={{ height: "100%" }}>
-        <NewRoundButton
-          roundStatus={roundStatus}
-          correctWord={correctWord}
-          onClick={startNewRound}
-        />
+        {roundStatus !== status.TBD && (
+          <NewRoundButton
+            roundStatus={roundStatus}
+            correctWord={correctWord}
+            onClick={startNewRound}
+          />
+        )}
         <Center style={{ flex: 1, width: "100%" }}>
           <GameBoard gameBoard={gameBoard} />
         </Center>

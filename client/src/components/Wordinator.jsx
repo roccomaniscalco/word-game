@@ -6,17 +6,23 @@ import GameBoard from "./GameBoard"
 import Keyboard from "./Keyboard"
 import NewRoundButton from "./NewRoundButton"
 
-const Wordinator = ({ resetWordinator }) => {
-  const { gameBoard, currentRow, keys, correctWord, status, handleKeyClick } =
-    useWordinator()
+const Wordinator = ({ startNewRound }) => {
+  const {
+    gameBoard,
+    currentRow,
+    keys,
+    correctWord,
+    roundStatus,
+    handleKeyClick,
+  } = useWordinator()
 
   return (
     <Container size="xs" style={{ height: "100%" }}>
       <Stack align="center" justify="space-between" style={{ height: "100%" }}>
         <NewRoundButton
-          status={status}
+          roundStatus={roundStatus}
           correctWord={correctWord}
-          onClick={resetWordinator}
+          onClick={startNewRound}
         />
         <Center style={{ flex: 1, width: "100%" }}>
           <GameBoard gameBoard={gameBoard} />
@@ -34,7 +40,7 @@ const Wordinator = ({ resetWordinator }) => {
 }
 
 Wordinator.propTypes = {
-  resetWordinator: func.isRequired,
+  startNewRound: func.isRequired,
 }
 
 export default Wordinator

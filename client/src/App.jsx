@@ -5,7 +5,7 @@ import Wordinator from "./components/Wordinator"
 function App() {
   const [key, setKey] = useState()
   // change key to rerender Wordinator and reset its state
-  const resetWordinator = () => {
+  const startNewRound = () => {
     setKey((prevKey) => !prevKey)
   }
 
@@ -18,7 +18,7 @@ function App() {
         overflow: "hidden",
       }}
     >
-      <Wordinator resetWordinator={resetWordinator} key={key} />
+      <Wordinator startNewRound={startNewRound} key={key} />
     </AppShell>
   )
 }

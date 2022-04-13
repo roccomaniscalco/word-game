@@ -5,7 +5,7 @@ import useRound from "./useRound"
 
 // only expose hook functionality directly used by UI
 const useWordinator = () => {
-  const { hasWon, hasLost, isRoundOver, correctWord, updateRound } = useRound()
+  const { roundStatus, isRoundOver, correctWord, updateRound } = useRound()
   const { keys, updateKeys } = useKeys()
   const { gameBoard, currentRow, addTile, removeTile, submitRow } =
     useGameBoard(isRoundOver, correctWord, updateRound, updateKeys)
@@ -16,7 +16,7 @@ const useWordinator = () => {
     currentRow,
     keys,
     correctWord,
-    status: { hasWon, hasLost },
+    roundStatus,
     handleKeyClick,
   }
 }

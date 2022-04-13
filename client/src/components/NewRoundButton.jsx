@@ -1,6 +1,7 @@
 import { Button, Transition } from "@mantine/core"
-import { bool, exact, func, string } from "prop-types"
+import { func, oneOf, string } from "prop-types"
 import { ArrowsShuffle2 } from "tabler-icons-react"
+import { status } from "../hooks/useRound"
 
 const slideDown = {
   in: { opacity: 1, transform: "translateY(0)" },
@@ -9,17 +10,17 @@ const slideDown = {
   transitionProperty: "transform, opacity",
 }
 
-const NewRoundButton = ({ status, correctWord, onClick }) => {
+const NewRoundButton = ({ roundStatus, correctWord, onClick }) => {
   return (
     <Transition
-      mounted={status.hasWon || status.hasLost}
+      mounted={roundStatus !== status.TBD} // only mount when round is over
       transition={slideDown}
       duration={250}
       timingFunction="ease"
     >
       {(styles) => (
         <Button
-          color={status.hasWon ? "green" : "red"}
+          color={roundStatus === status.WIN ? "green" : "red"}
           size="sm"
           variant="outline"
           radius="xl"
@@ -27,7 +28,7 @@ const NewRoundButton = ({ status, correctWord, onClick }) => {
           style={{ ...styles, position: "absolute", top: "10px" }}
           onClick={onClick}
         >
-          {status.hasWon
+          {roundStatus === status.WIN
             ? "Correct! Start new game"
             : `The word was ${correctWord.toUpperCase()}! Start new game`}
         </Button>
@@ -37,10 +38,7 @@ const NewRoundButton = ({ status, correctWord, onClick }) => {
 }
 
 NewRoundButton.propTypes = {
-  status: exact({
-    hasWon: bool.isRequired,
-    hasLost: bool.isRequired,
-  }).isRequired,
+  roundStatus: oneOf(Object.values(status)).isRequired,
   correctWord: string.isRequired,
   onClick: func.isRequired,
 }

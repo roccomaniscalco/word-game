@@ -1,21 +1,25 @@
 import { useState } from "react"
 
+export const status = {
+  WIN: "win",
+  LOSE: "lose",
+  TBD: "tbd",
+}
+
 const useRound = () => {
   const [correctWord] = useState("store")
-  const [hasWon, setHasWon] = useState(false)
-  const [hasLost, setHasLost] = useState(false)
+  const [roundStatus, setRoundStatus] = useState(status.TBD)
 
   const updateRound = (gameBoard, currentRow) => {
     const currentWord = currentRow.map(({ letter }) => letter).join("")
-    if (currentWord === correctWord) setHasWon(true)
-    else if (gameBoard[5].length !== 0) setHasLost(true)
+    if (currentWord === correctWord) setRoundStatus(status.WIN)
+    else if (gameBoard[5].length !== 0) setRoundStatus(status.LOSE)
   }
 
   return {
     correctWord,
-    isRoundOver: hasWon || hasLost,
-    hasWon,
-    hasLost,
+    isRoundOver: roundStatus !== status.TBD,
+    roundStatus,
     updateRound,
   }
 }

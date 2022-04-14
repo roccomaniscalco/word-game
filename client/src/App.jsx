@@ -12,7 +12,7 @@ function App() {
   }
 
   return (
-    <AppShell fixed padding="sm" header={<AppHeader />}>
+    <AppShell fixed padding="md" header={<AppHeader />}>
       <Wordinator rerenderWordinator={rerenderWordinator} key={key} />
     </AppShell>
   )

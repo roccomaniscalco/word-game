@@ -5,11 +5,27 @@ import useRound from "./useRound"
 
 // only expose hook functionality directly used by UI
 const useWordinator = () => {
-  const { roundStatus, isRoundOver, correctWord, updateRound } = useRound()
-  const { keys, updateKeys } = useKeys()
-  const { gameBoard, currentRow, addTile, removeTile, submitRow } =
-    useGameBoard(isRoundOver, correctWord, updateRound, updateKeys)
+  const { roundStatus, isRoundOver, correctWord, updateRound, resetRound } =
+    useRound()
+
+  const { keys, updateKeys, resetKeys } = useKeys()
+
+  const {
+    gameBoard,
+    currentRow,
+    addTile,
+    removeTile,
+    submitRow,
+    resetGameBoard,
+  } = useGameBoard(isRoundOver, correctWord, updateRound, updateKeys)
+
   const { handleKeyClick } = useKeyboard(addTile, removeTile, submitRow)
+
+  const resetWordinator = () => {
+    resetRound()
+    resetKeys()
+    resetGameBoard()
+  }
 
   return {
     gameBoard,
@@ -18,6 +34,7 @@ const useWordinator = () => {
     correctWord,
     roundStatus,
     handleKeyClick,
+    resetWordinator,
   }
 }
 

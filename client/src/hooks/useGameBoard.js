@@ -46,12 +46,18 @@ const useGameBoard = (isRoundOver, correctWord, updateRound, updateKeys) => {
     if (rowI < gameBoard.length - 1) setRowI((prevRowI) => prevRowI + 1)
   }
 
+  const resetGameBoard = () => {
+    setGameBoard([[], [], [], [], [], []])
+    setRowI(0)
+  }
+
   return {
     gameBoard,
     currentRow: isRoundOver ? [] : gameBoard[rowI],
     addTile,
     removeTile,
     submitRow,
+    resetGameBoard
   }
 }
 

@@ -25,12 +25,17 @@ const useKeys = () => {
     setKeys(newKeys)
   }
 
+  const resetKeys = () => {
+    setKeys(defaultKeys)
+  }
+
   return {
     keys: Object.entries(keys).map(([letter, evaluation]) => ({
       letter,
       evaluation,
     })),
     updateKeys,
+    resetKeys
   }
 }
 

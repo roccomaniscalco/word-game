@@ -8,7 +8,7 @@ export const status = {
 }
 
 const useRound = () => {
-  const [correctWord] = useLocalStorageValue({
+  const [correctWord, setCorrectWord] = useLocalStorageValue({
     key: "correctWord",
     defaultValue: GET_RANDOM_WORD(),
   })
@@ -23,11 +23,17 @@ const useRound = () => {
     else if (gameBoard[5].length !== 0) setRoundStatus(status.LOSE)
   }
 
+  const resetRound = () => {
+    setCorrectWord(GET_RANDOM_WORD())
+    setRoundStatus(status.TBD)
+  }
+
   return {
     correctWord,
     isRoundOver: roundStatus !== status.TBD,
     roundStatus,
     updateRound,
+    resetRound
   }
 }
 

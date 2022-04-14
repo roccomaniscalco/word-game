@@ -5762,6 +5762,6 @@ export const IS_WORD = (row) =>
   WORDS.has(row.map((tile) => tile.letter).join(""))
 
 export const GET_RANDOM_WORD = () => {
-  const randomIndex = Math.round(Math.random() * WORDS.length)
-  return Array.from(WORDS)[randomIndex].split("")
+  const randomIndex = Math.round(Math.random() * WORDS.size)
+  return Array.from(WORDS)[randomIndex]
 }

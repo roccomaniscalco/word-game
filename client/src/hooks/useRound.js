@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { GET_RANDOM_WORD } from "../constants/words"
 
 export const status = {
   WIN: "win",
@@ -7,7 +8,7 @@ export const status = {
 }
 
 const useRound = () => {
-  const [correctWord] = useState("store")
+  const [correctWord] = useState(GET_RANDOM_WORD())
   const [roundStatus, setRoundStatus] = useState(status.TBD)
 
   const updateRound = (gameBoard, currentRow) => {

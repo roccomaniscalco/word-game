@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useLocalStorageValue } from "@mantine/hooks"
 import { evals } from "../constants/qwerty"
 import { IS_WORD } from "../constants/words"
 
@@ -12,8 +12,11 @@ const evaluateRow = (currentRow, correctWord) =>
   })
 
 const useGameBoard = (isRoundOver, correctWord, updateRound, updateKeys) => {
-  const [rowI, setRowI] = useState(0)
-  const [gameBoard, setGameBoard] = useState([[], [], [], [], [], []])
+  const [rowI, setRowI] = useLocalStorageValue({ key: "rowI", defaultValue: 0 })
+  const [gameBoard, setGameBoard] = useLocalStorageValue({
+    key: "gameBoard",
+    defaultValue: [[], [], [], [], [], []],
+  })
   const isFullRow = gameBoard[rowI].length === 5
   const isEmptyRow = gameBoard[rowI].length === 0
 

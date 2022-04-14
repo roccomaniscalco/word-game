@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useLocalStorageValue } from "@mantine/hooks"
 import { GET_RANDOM_WORD } from "../constants/words"
 
 export const status = {
@@ -8,8 +8,14 @@ export const status = {
 }
 
 const useRound = () => {
-  const [correctWord] = useState(GET_RANDOM_WORD())
-  const [roundStatus, setRoundStatus] = useState(status.TBD)
+  const [correctWord] = useLocalStorageValue({
+    key: "correctWord",
+    defaultValue: GET_RANDOM_WORD(),
+  })
+  const [roundStatus, setRoundStatus] = useLocalStorageValue({
+    key: "roundStatus",
+    defaultValue: status.TBD,
+  })
 
   const updateRound = (gameBoard, currentRow) => {
     const currentWord = currentRow.map(({ letter }) => letter).join("")

@@ -1,10 +1,16 @@
-import { useState } from "react"
+import { useLocalStorageValue } from "@mantine/hooks"
 import { evals, LETTERS } from "../constants/qwerty"
 
+const defaultKeys = LETTERS.reduce(
+  (keys, letter) => ({ ...keys, [letter]: evals.TBD }),
+  {}
+)
+
 const useKeys = () => {
-  const [keys, setKeys] = useState(
-    LETTERS.reduce((keys, letter) => ({ ...keys, [letter]: evals.TBD }), {})
-  )
+  const [keys, setKeys] = useLocalStorageValue({
+    key: "keys",
+    defaultValue: defaultKeys,
+  })
 
   // update keys to reflect evaluations in currentRow
   const updateKeys = (currentRow) => {

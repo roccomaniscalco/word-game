@@ -1,4 +1,4 @@
-import { Box, Center, Container, Stack } from "@mantine/core"
+import { Center, Container, Stack } from "@mantine/core"
 import { func } from "prop-types"
 import React from "react"
 import { status } from "../hooks/useRound"
@@ -24,7 +24,10 @@ const Wordinator = ({ rerenderWordinator }) => {
   }
 
   return (
-    <Container size="xs" style={{ height: "100%" }}>
+    <Container
+      size="xs"
+      style={{ height: "100%", position: "relative", padding: 0 }}
+    >
       <Stack align="center" justify="space-between" style={{ height: "100%" }}>
         {roundStatus !== status.TBD && (
           <NewRoundButton
@@ -36,13 +39,11 @@ const Wordinator = ({ rerenderWordinator }) => {
         <Center style={{ flex: 1, width: "100%" }}>
           <GameBoard gameBoard={gameBoard} />
         </Center>
-        <Box style={{ width: "100%" }}>
-          <Keyboard
-            keys={keys}
-            currentRow={currentRow}
-            onClick={handleKeyClick}
-          />
-        </Box>
+        <Keyboard
+          keys={keys}
+          currentRow={currentRow}
+          onClick={handleKeyClick}
+        />
       </Stack>
     </Container>
   )

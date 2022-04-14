@@ -12,7 +12,7 @@ const slideDown = keyframes({
 const useStyles = createStyles({
   button: {
     position: "absolute",
-    top: "10px",
+    top: 0,
 
     opacity: 0,
     animation: `${slideDown} 300ms ease 1250ms forwards`,
@@ -25,7 +25,7 @@ const NewRoundButton = ({ roundStatus, correctWord, onClick }) => {
   return (
     <Button
       color={roundStatus === status.WIN ? "green" : "red"}
-      size="sm"
+      size="xs"
       variant="outline"
       radius="xl"
       rightIcon={<PlayerPlayIcon size={16} />}

@@ -12,7 +12,13 @@ function App() {
   }
 
   return (
-    <AppShell fixed padding="md" header={<AppHeader />}>
+    <AppShell
+      padding="md"
+      header={<AppHeader />}
+      styles={{
+        body: { height: "calc(100vh - 60px)" }, // offset body by Header height
+      }}
+    >
       <Wordinator rerenderWordinator={rerenderWordinator} key={key} />
     </AppShell>
   )

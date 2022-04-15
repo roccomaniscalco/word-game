@@ -20,7 +20,7 @@ const pop = keyframes({
 
 const useStyles = createStyles((theme, { hasLetter, colI }) => ({
   tile: {
-    color: theme.white,
+    color: theme.colorScheme === "dark" ? theme.white : theme.black,
     textTransform: "uppercase",
 
     display: "flex",
@@ -29,7 +29,6 @@ const useStyles = createStyles((theme, { hasLetter, colI }) => ({
 
     borderWidth: "0px",
     borderStyle: "solid",
-    borderColor: hasLetter ? theme.colors.dark[3] : theme.colors.dark[4],
 
     animation: hasLetter ? `${pop} 100ms` : undefined,
 
@@ -40,19 +39,40 @@ const useStyles = createStyles((theme, { hasLetter, colI }) => ({
   },
 
   [evals.TBD]: {
-    backgroundColor: theme.colors.dark[9],
+    backgroundColor:
+      theme.colorScheme === "dark" ? theme.colors.dark[9] : undefined,
     borderWidth: "2px",
+    borderColor:
+      theme.colorScheme === "dark"
+        ? hasLetter
+          ? theme.colors.dark[3]
+          : theme.colors.dark[4]
+        : hasLetter
+        ? theme.colors.dark[2]
+        : theme.colors.dark[1],
   },
+
   [evals.UNUSED]: {
-    backgroundColor: theme.colors.dark[6],
+    backgroundColor:
+      theme.colorScheme === "dark"
+        ? theme.colors.dark[6]
+        : theme.colors.dark[1],
     animation: `${flip} 500ms ease-in-out ${colI * 200}ms`,
   },
+
   [evals.USED]: {
-    backgroundColor: theme.fn.darken(theme.colors.yellow[6], 0.3),
+    backgroundColor:
+      theme.colorScheme === "dark"
+        ? theme.fn.darken(theme.colors.yellow[6], 0.3)
+        : theme.colors.yellow[6],
     animation: `${flip} 500ms ease-in-out ${colI * 200}ms`,
   },
+  
   [evals.CORRECT]: {
-    backgroundColor: theme.fn.darken(theme.colors.green[6], 0.3),
+    backgroundColor:
+      theme.colorScheme === "dark"
+        ? theme.fn.darken(theme.colors.green[6], 0.3)
+        : theme.colors.green[6],
     animation: `${flip} 500ms ease-in-out ${colI * 200}ms`,
   },
 }))

@@ -6,9 +6,13 @@ import { evals } from "../constants/qwerty"
 
 const useStyles = createStyles((theme) => ({
   letterContainer: {
-    backgroundColor: theme.colors.dark[4],
+    color: theme.colorScheme === "dark" ? theme.white : theme.black,
+
+    backgroundColor:
+      theme.colorScheme === "dark" ? theme.colors.dark[4] : "#e9ecef",
     "&:hover": {
-      backgroundColor: theme.colors.dark[4],
+      backgroundColor:
+        theme.colorScheme === "dark" ? theme.colors.dark[4] : "#e9ecef",
     },
 
     display: "flex",
@@ -26,21 +30,41 @@ const useStyles = createStyles((theme) => ({
   },
 
   [evals.UNUSED]: {
-    backgroundColor: theme.colors.dark[6],
+    backgroundColor:
+      theme.colorScheme === "dark"
+        ? theme.colors.dark[6]
+        : theme.colors.dark[1],
     "&:hover": {
-      backgroundColor: theme.colors.dark[6],
+      backgroundColor:
+        theme.colorScheme === "dark"
+          ? theme.colors.dark[6]
+          : theme.colors.dark[1],
     },
   },
+
   [evals.USED]: {
-    backgroundColor: theme.fn.darken(theme.colors.yellow[6], 0.3),
+    backgroundColor:
+      theme.colorScheme === "dark"
+        ? theme.fn.darken(theme.colors.yellow[6], 0.3)
+        : theme.colors.yellow[6],
     "&:hover": {
-      backgroundColor: theme.fn.darken(theme.colors.yellow[6], 0.3),
+      backgroundColor:
+        theme.colorScheme === "dark"
+          ? theme.fn.darken(theme.colors.yellow[6], 0.3)
+          : theme.colors.yellow[6],
     },
   },
+  
   [evals.CORRECT]: {
-    backgroundColor: theme.fn.darken(theme.colors.green[6], 0.3),
+    backgroundColor:
+      theme.colorScheme === "dark"
+        ? theme.fn.darken(theme.colors.green[6], 0.3)
+        : theme.colors.green[6],
     "&:hover": {
-      backgroundColor: theme.fn.darken(theme.colors.green[6], 0.3),
+      backgroundColor:
+        theme.colorScheme === "dark"
+          ? theme.fn.darken(theme.colors.green[6], 0.3)
+          : theme.colors.green[6],
     },
   },
 }))

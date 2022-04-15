@@ -1,4 +1,4 @@
-import { ActionIcon, Box, Center, Menu, SegmentedControl } from "@mantine/core"
+import { ActionIcon, Box, Center, Menu, SegmentedControl, useMantineColorScheme } from "@mantine/core"
 import {
   Settings as SettingsIcon,
   Sun as SunIcon,
@@ -6,6 +6,8 @@ import {
 } from "tabler-icons-react"
 
 const Settings = () => {
+  const { colorScheme, toggleColorScheme } = useMantineColorScheme()
+
   return (
     <Menu
       control={
@@ -17,7 +19,8 @@ const Settings = () => {
       <Menu.Label>Settings</Menu.Label>
       <Box>
         <SegmentedControl
-          sx={{ margin: "sm" }}
+          value={colorScheme}
+          onChange={toggleColorScheme}
           fullWidth
           data={[
             {

@@ -1,4 +1,3 @@
-import { func } from "prop-types"
 import {
   AlertCircle as AlertCircleIcon,
   ArrowForward as ArrowForwardIcon,
@@ -7,13 +6,12 @@ import { gameBoardRow } from "../constants/propTypes"
 import { IS_WORD } from "../constants/words"
 import Key from "./Key"
 
-const KeyEnter = ({ onClick, currentRow }) => {
+const KeyEnter = ({ currentRow }) => {
   const isAWord = IS_WORD(currentRow)
   const is5Letter = currentRow.length === 5
 
   return (
     <Key
-      onClick={onClick}
       code="enter"
       disabled={!is5Letter}
       Icon={isAWord || !is5Letter ? ArrowForwardIcon : AlertCircleIcon}
@@ -30,7 +28,6 @@ const KeyEnter = ({ onClick, currentRow }) => {
 }
 
 KeyEnter.propTypes = {
-  onClick: func.isRequired,
   currentRow: gameBoardRow.isRequired,
 }
 export default KeyEnter

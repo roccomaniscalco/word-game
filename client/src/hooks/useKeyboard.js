@@ -2,11 +2,13 @@ import { useEffect } from "react"
 
 // accept user input from actual keyboard and on-screen keyboard
 const useKeyboard = (addTile, removeTile, submitRow) => {
-  const handleKeyClick = (event) => {
-    const code = event.currentTarget.value.toLocaleLowerCase()
+  const handleKeyClick = (e) => {
+    const key = e.target.matches(".key") ? e.target : e.target.closest(".key")
+    const code = key?.value.toLocaleLowerCase()
+
     if (code === "enter") submitRow()
     else if (code === "backspace") removeTile()
-    else addTile(code)
+    else if (code) addTile(code)
   }
 
   const handleKeydown = ({ code }) => {

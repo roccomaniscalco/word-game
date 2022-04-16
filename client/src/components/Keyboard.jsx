@@ -16,6 +16,7 @@ const Keyboard = ({ keys, onClick, currentRow }) => {
 
   return (
     <Grid
+      onClick={onClick}
       columns={20}
       gutter={4}
       justify="center"
@@ -24,28 +25,28 @@ const Keyboard = ({ keys, onClick, currentRow }) => {
     >
       {firstRow.map(({ letter, evaluation }) => (
         <Grid.Col key={letter} span={2}>
-          <Key onClick={onClick} code={letter} evaluation={evaluation}/>
+          <Key code={letter} evaluation={evaluation}/>
         </Grid.Col>
       ))}
 
       {secondRow.map(({ letter, evaluation }) => (
         <Grid.Col key={letter} span={2}>
-          <Key onClick={onClick} code={letter} evaluation={evaluation}/>
+          <Key code={letter} evaluation={evaluation}/>
         </Grid.Col>
       ))}
 
       <Grid.Col span={3}>
-        <KeyEnter onClick={onClick} currentRow={currentRow} />
+        <KeyEnter currentRow={currentRow} />
       </Grid.Col>
 
       {thirdRow.map(({ letter, evaluation }) => (
         <Grid.Col key={letter} span={2}>
-          <Key onClick={onClick} code={letter} evaluation={evaluation} />
+          <Key code={letter} evaluation={evaluation} />
         </Grid.Col>
       ))}
-
+      
       <Grid.Col span={3}>
-        <Key onClick={onClick} code="backspace" Icon={BackspaceIcon} />
+        <Key code="backspace" Icon={BackspaceIcon} />
       </Grid.Col>
     </Grid>
   )

@@ -1,5 +1,5 @@
 import { Button, createStyles, keyframes, Title } from "@mantine/core"
-import { elementType, func, string } from "prop-types"
+import { elementType, string } from "prop-types"
 import { memo } from "react"
 import { letterEvaluation } from "../constants/propTypes"
 import { evals } from "../constants/qwerty"
@@ -43,17 +43,17 @@ const useStyles = createStyles((theme, { evaluation }) => {
   }
 })
 
-const Key = ({ onClick, code, Icon, evaluation, ...props }) => {
+const Key = ({ code, Icon, evaluation, ...props }) => {
   const { classes, cx } = useStyles({ evaluation })
 
   return (
     <Button
       value={code}
-      onClick={onClick}
       uppercase
       className={cx(
         classes.button,
-        evaluation !== evals.TBD && evaluation !== undefined && classes.fill
+        evaluation !== evals.TBD && evaluation !== undefined && classes.fill,
+        "key"
       )}
       {...props}
     >
@@ -63,7 +63,6 @@ const Key = ({ onClick, code, Icon, evaluation, ...props }) => {
 }
 
 Key.propTypes = {
-  onClick: func.isRequired,
   code: string.isRequired,
   evaluation: letterEvaluation,
   Icon: elementType,

@@ -28,8 +28,8 @@ export const LETTERS = [
 ]
 
 export const evals = {
-  CORRECT: "correct",
-  USED: "used",
-  UNUSED: "unused",
-  TBD: "tbd",
+  CORRECT: "CORRECT",
+  USED: "USED",
+  UNUSED: "UNUSED",
+  TBD: "TBD",
 }

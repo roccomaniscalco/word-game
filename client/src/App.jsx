@@ -1,6 +1,6 @@
 import { AppShell } from "@mantine/core"
 import { useState } from "react"
-import AppHeader from "./components/AppHeader"
+import AppHeader from "./components/header/AppHeader"
 import Wordinator from "./components/Wordinator"
 
 function App() {
@@ -16,7 +16,7 @@ function App() {
       padding="md"
       header={<AppHeader />}
       styles={{
-        body: { height: "calc(100vh - 60px)" }, // offset body by Header height
+        body: { height: "calc(100vh - 50px)" }, // offset body by Header height
       }}
     >
       <Wordinator rerenderWordinator={rerenderWordinator} key={key} />

@@ -13,9 +13,10 @@ const useStyles = createStyles({
   button: {
     position: "absolute",
     top: 0,
+    zIndex: 100,
 
     opacity: 0,
-    animation: `${slideDown} 300ms ease 1250ms forwards`,
+    animation: `${slideDown} 250ms ease 1250ms forwards`,
   },
 })
 
@@ -24,10 +25,10 @@ const NewRoundButton = ({ roundStatus, correctWord, onClick }) => {
 
   return (
     <Button
-      color={roundStatus === status.WIN ? "green" : "red"}
-      size="xs"
-      variant="outline"
-      radius="xl"
+      color={roundStatus === status.WIN ? "blue" : "red"}
+      size="sm"
+      variant="filled"
+      radius="md"
       rightIcon={<PlayerPlayIcon size={16} />}
       className={classes.button}
       onClick={onClick}

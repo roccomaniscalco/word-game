@@ -4,14 +4,15 @@ import Settings from "./Settings"
 
 const useStyles = createStyles((theme) => ({
   header: {
+    color: theme.colorScheme === "dark" ? theme.white : theme.black,
+    backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[9] : theme.white,
+
     display: "flex",
     alignItems: "center",
     justifyContent: "space-between",
 
-    height: 60,
+    height: 50,
     paddingInline: theme.spacing.md,
-
-    backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[9] : theme.white,
   },
 }))
 

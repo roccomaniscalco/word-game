@@ -1,4 +1,4 @@
-import { Center, Container, Stack } from "@mantine/core"
+import { Box, Center, Container, Stack } from "@mantine/core"
 import { func } from "prop-types"
 import React from "react"
 import { status } from "../hooks/useRound"
@@ -39,11 +39,13 @@ const Wordinator = ({ rerenderWordinator }) => {
         <Center style={{ flex: 1, width: "100%" }}>
           <GameBoard gameBoard={gameBoard} />
         </Center>
-        <Keyboard
-          keys={keys}
-          currentRow={currentRow}
-          onClick={handleKeyClick}
-        />
+        <Box>
+          <Keyboard
+            keys={keys}
+            currentRow={currentRow}
+            onClick={handleKeyClick}
+          />
+        </Box>
       </Stack>
     </Container>
   )

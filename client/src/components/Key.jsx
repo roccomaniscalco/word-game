@@ -33,12 +33,12 @@ const useStyles = createStyles((theme) => ({
     backgroundColor:
       theme.colorScheme === "dark"
         ? theme.colors.dark[6]
-        : theme.colors.dark[1],
+        : theme.colors.dark[0],
     "&:hover": {
       backgroundColor:
         theme.colorScheme === "dark"
           ? theme.colors.dark[6]
-          : theme.colors.dark[1],
+          : theme.colors.dark[0],
     },
   },
 
@@ -54,7 +54,7 @@ const useStyles = createStyles((theme) => ({
           : theme.colors.yellow[6],
     },
   },
-  
+
   [evals.CORRECT]: {
     backgroundColor:
       theme.colorScheme === "dark"

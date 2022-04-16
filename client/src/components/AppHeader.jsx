@@ -11,7 +11,7 @@ const useStyles = createStyles((theme) => ({
     height: 60,
     paddingInline: theme.spacing.md,
 
-    backgroundColor: theme.colors.background,
+    backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[9] : theme.white,
   },
 }))
 

@@ -1,4 +1,11 @@
-import { ActionIcon, Box, Center, Menu, SegmentedControl, useMantineColorScheme } from "@mantine/core"
+import {
+  ActionIcon,
+  Box,
+  Center,
+  Menu,
+  SegmentedControl,
+  useMantineColorScheme,
+} from "@mantine/core"
 import {
   Settings as SettingsIcon,
   Sun as SunIcon,
@@ -10,6 +17,7 @@ const Settings = () => {
 
   return (
     <Menu
+      radius="md"
       control={
         <ActionIcon variant="default" size="lg" radius="md">
           <SettingsIcon size={22} />
@@ -19,6 +27,7 @@ const Settings = () => {
       <Menu.Label>Settings</Menu.Label>
       <Box>
         <SegmentedControl
+          radius="md"
           value={colorScheme}
           onChange={toggleColorScheme}
           fullWidth

@@ -29,6 +29,14 @@ const useStyles = createStyles((theme, { hasLetter, colI }) => ({
 
     borderWidth: "0px",
     borderStyle: "solid",
+    borderColor:
+    theme.colorScheme === "dark"
+      ? hasLetter
+        ? theme.colors.dark[3]
+        : theme.colors.dark[4]
+      : hasLetter
+      ? theme.colors.dark[1]
+      : theme.colors.dark[0],
 
     animation: hasLetter ? `${pop} 100ms` : undefined,
 
@@ -42,21 +50,13 @@ const useStyles = createStyles((theme, { hasLetter, colI }) => ({
     backgroundColor:
       theme.colorScheme === "dark" ? theme.colors.dark[9] : undefined,
     borderWidth: "2px",
-    borderColor:
-      theme.colorScheme === "dark"
-        ? hasLetter
-          ? theme.colors.dark[3]
-          : theme.colors.dark[4]
-        : hasLetter
-        ? theme.colors.dark[2]
-        : theme.colors.dark[1],
   },
 
   [evals.UNUSED]: {
     backgroundColor:
       theme.colorScheme === "dark"
         ? theme.colors.dark[6]
-        : theme.colors.dark[1],
+        : theme.colors.dark[0],
     animation: `${flip} 500ms ease-in-out ${colI * 200}ms`,
   },
 
@@ -67,7 +67,7 @@ const useStyles = createStyles((theme, { hasLetter, colI }) => ({
         : theme.colors.yellow[6],
     animation: `${flip} 500ms ease-in-out ${colI * 200}ms`,
   },
-  
+
   [evals.CORRECT]: {
     backgroundColor:
       theme.colorScheme === "dark"

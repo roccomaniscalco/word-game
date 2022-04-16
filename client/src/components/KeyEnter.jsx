@@ -18,6 +18,7 @@ const KeyEnter = ({ onClick, currentRow }) => {
       disabled={!is5Letter}
       Icon={isAWord || !is5Letter ? ArrowForwardIcon : AlertCircleIcon}
       sx={(theme) => ({
+        color: theme.white,
         backgroundColor: isAWord ? theme.colors.blue : theme.colors.red,
         "&:hover": {
           backgroundColor: isAWord ? theme.colors.blue : theme.colors.red,

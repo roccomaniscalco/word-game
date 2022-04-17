@@ -1,5 +1,6 @@
 import { useLocalStorageValue } from "@mantine/hooks"
 import { GET_RANDOM_WORD } from "../constants/words"
+import { useStats } from "../contexts/StatsContext"
 
 export const status = {
   WIN: "win",
@@ -8,6 +9,7 @@ export const status = {
 }
 
 const useRound = () => {
+  const { dispatch } = useStats()
   const [correctWord, setCorrectWord] = useLocalStorageValue({
     key: "correctWord",
     defaultValue: GET_RANDOM_WORD(),
@@ -17,10 +19,19 @@ const useRound = () => {
     defaultValue: status.TBD,
   })
 
+  const win = () => {
+    setRoundStatus(status.WIN)
+    dispatch({ type: status.WIN })
+  }
+  const lose = () => {
+    setRoundStatus(status.LOSE)
+    dispatch({ type: status.LOSE })
+  }
+
   const updateRound = (gameBoard, currentRow) => {
     const currentWord = currentRow.map(({ letter }) => letter).join("")
-    if (currentWord === correctWord) setRoundStatus(status.WIN)
-    else if (gameBoard[5].length !== 0) setRoundStatus(status.LOSE)
+    if (currentWord === correctWord) win()
+    else if (gameBoard[5].length !== 0) lose()
   }
 
   const resetRound = () => {
@@ -33,7 +44,7 @@ const useRound = () => {
     isRoundOver: roundStatus !== status.TBD,
     roundStatus,
     updateRound,
-    resetRound
+    resetRound,
   }
 }
 

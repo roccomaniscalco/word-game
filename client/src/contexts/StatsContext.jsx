@@ -1,5 +1,6 @@
+import { useWindowEvent } from "@mantine/hooks"
 import { node } from "prop-types"
-import { createContext, useContext, useReducer } from "react"
+import { createContext, useContext, useEffect, useReducer } from "react"
 
 const initialStats = {
   roundsWon: 0,
@@ -7,6 +8,9 @@ const initialStats = {
   currentStreak: 0,
   highestStreak: 0,
 }
+
+const initStats = (initialStats) =>
+  JSON.parse(localStorage.getItem("stats")) || initialStats
 
 const statsReducer = (state, action) => {
   switch (action.type) {
@@ -22,6 +26,8 @@ const statsReducer = (state, action) => {
       }
     case "lose":
       return { ...state, roundsLost: state.roundsLost + 1, currentStreak: 0 }
+    case "reset":
+      return initStats(action.payload)
     default:
       throw new Error()
   }
@@ -33,7 +39,17 @@ const StatsContext = createContext({
 })
 
 export const StatsProvider = ({ children }) => {
-  const [stats, dispatch] = useReducer(statsReducer, initialStats)
+  const [stats, dispatch] = useReducer(statsReducer, initialStats, initStats)
+
+  useEffect(() => {
+    localStorage.setItem("stats", JSON.stringify(stats))
+  }, [stats])
+
+  useWindowEvent("storage", (event) => {
+    if (event.storageArea === window.localStorage && event.key === "stats") {
+      dispatch({ type: "reset", payload: event.newValue ?? undefined })
+    }
+  })
 
   return (
     <StatsContext.Provider value={{ stats, dispatch }}>

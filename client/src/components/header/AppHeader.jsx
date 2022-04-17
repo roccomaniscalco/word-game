@@ -1,11 +1,12 @@
-import { ActionIcon, createStyles, Group, Header, Title } from "@mantine/core"
-import { ChartBar as ChartBarIcon } from "tabler-icons-react"
+import { createStyles, Group, Header, Title } from "@mantine/core"
 import Settings from "./Settings"
+import Statistics from "./Statistics"
 
 const useStyles = createStyles((theme) => ({
   header: {
     color: theme.colorScheme === "dark" ? theme.white : theme.black,
-    backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[9] : theme.white,
+    backgroundColor:
+      theme.colorScheme === "dark" ? theme.colors.dark[9] : theme.white,
 
     display: "flex",
     alignItems: "center",
@@ -23,10 +24,7 @@ const AppHeader = () => {
     <Header className={classes.header}>
       <Title order={3}>Wordinator</Title>
       <Group spacing="xs">
-        <ActionIcon variant="default" size="lg" radius="md">
-          <ChartBarIcon size={22} />
-        </ActionIcon>
-
+        <Statistics />
         <Settings />
       </Group>
     </Header>

@@ -59,7 +59,6 @@ const useStyles = createStyles((theme, { colI, evaluation }) => {
       textTransform: "uppercase",
 
       backgroundColor: evalColor.TBD,
-      color: theme.colorScheme === "dark" ? theme.white : theme.black,
       borderWidth: "2px",
       borderStyle: "solid",
       borderColor:

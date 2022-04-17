@@ -20,6 +20,13 @@ const ThemeProvider = ({ children }) => {
         withGlobalStyles
         withNormalizeCSS
         theme={{ colorScheme }}
+        styles={{
+          Title: (theme) => ({
+            root: {
+              color: theme.colorScheme === "dark" ? theme.white : theme.black,
+            },
+          })
+        }}
       >
         <Global
           styles={(theme) => ({

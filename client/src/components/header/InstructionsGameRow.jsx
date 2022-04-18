@@ -1,11 +1,13 @@
-import { SimpleGrid } from "@mantine/core"
+import { Paper, SimpleGrid } from "@mantine/core"
 import { gameBoardRow } from "../../constants/propTypes"
-import AppPaper from "../common/AppPaper"
 import GameTile from "../GameTile"
 
 const InstructionsGameRow = ({ row }) => {
   return (
-    <AppPaper
+    <Paper
+      p="sm"
+      radius="md"
+      withBorder
       sx={(theme) => ({
         backgroundColor:
           theme.colorScheme === "dark"
@@ -13,7 +15,7 @@ const InstructionsGameRow = ({ row }) => {
             : theme.colors.gray[2],
       })}
     >
-      <SimpleGrid cols={5} spacing={6}>
+      <SimpleGrid cols={5} spacing={5} py={2} style={{ aspectRatio: "5/1" }}>
         {row.map((tile, i) => (
           <GameTile
             letter={tile.letter}
@@ -23,7 +25,7 @@ const InstructionsGameRow = ({ row }) => {
           />
         ))}
       </SimpleGrid>
-    </AppPaper>
+    </Paper>
   )
 }
 

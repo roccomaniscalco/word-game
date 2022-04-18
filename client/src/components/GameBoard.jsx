@@ -1,5 +1,4 @@
 import { createStyles, SimpleGrid } from "@mantine/core"
-import { useElementSize } from "@mantine/hooks"
 import { gameBoard } from "../constants/propTypes"
 import { evals } from "../constants/qwerty"
 import GameTile from "./GameTile"
@@ -21,15 +20,13 @@ const fillGameBoard = (gameBoard) =>
 
 const GameBoard = ({ gameBoard }) => {
   const { classes } = useStyles()
-  const { ref, width } = useElementSize()
 
   return (
     <SimpleGrid
       cols={5}
-      spacing={6}
+      spacing={5}
       className={classes.board}
-      style={{ height: width * (6 / 5) }} // preserve aspect ratio
-      ref={ref}
+      style={{ aspectRatio: "5/6" }} // preserve aspect ratio
     >
       {fillGameBoard(gameBoard).map((row) =>
         row.map((tile, i) => (

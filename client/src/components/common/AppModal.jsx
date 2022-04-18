@@ -1,12 +1,19 @@
 import { ActionIcon, Modal, Text } from "@mantine/core"
 import { elementType, node, string } from "prop-types"
-import { useState } from "react"
+import { useRef, useState } from "react"
 
 const AppModal = ({ children, Icon, title }) => {
   const [isOpened, setIsOpened] = useState(false)
+  const actionIconRef = useRef()
 
-  const handleClose = () => setIsOpened(false)
-  const handleOpen = () => setIsOpened(true)
+  const handleClose = () => {
+    setIsOpened(false)
+    
+  }
+  const handleOpen = () => {
+    setIsOpened(true)
+    actionIconRef.current.blur() // prevent ActionIcon from focusing when modal is closed
+  }
 
   return (
     <>
@@ -22,8 +29,14 @@ const AppModal = ({ children, Icon, title }) => {
         {children}
       </Modal>
 
-      <ActionIcon variant="default" size="lg" radius="md" onClick={handleOpen}>
-        <Icon  />
+      <ActionIcon
+        variant="default"
+        size="lg"
+        radius="md"
+        onClick={handleOpen}
+        ref={actionIconRef}
+      >
+        <Icon />
       </ActionIcon>
     </>
   )

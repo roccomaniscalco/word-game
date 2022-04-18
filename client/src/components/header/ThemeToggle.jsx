@@ -1,12 +1,19 @@
 import { ActionIcon, useMantineColorScheme } from "@mantine/core"
 import { Sun as SunIcon, Moon as MoonIcon } from "tabler-icons-react"
+import { useRef } from "react"
 
 const ThemeToggle = () => {
   const { colorScheme, toggleColorScheme } = useMantineColorScheme()
+  const actionIconRef = useRef()
 
+  const handleClick = () => {
+    toggleColorScheme()
+    actionIconRef.current.blur() // prevent ActionIcon from focusing when clicked
+  }
+  
   return (
     <ActionIcon
-      onClick={toggleColorScheme}
+      onClick={handleClick}
       size="lg"
       radius="md"
       variant="default"
@@ -16,6 +23,7 @@ const ThemeToggle = () => {
             ? theme.colors.yellow[4]
             : theme.colors.blue[6],
       })}
+      ref={actionIconRef}
     >
       {colorScheme === "dark" ? <SunIcon /> : <MoonIcon />}
     </ActionIcon>

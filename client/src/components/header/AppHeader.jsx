@@ -1,5 +1,5 @@
 import { createStyles, Group, Header, Title } from "@mantine/core"
-import Settings from "./Settings"
+import ThemeToggle from "./ThemeToggle"
 import Statistics from "./Statistics"
 
 const useStyles = createStyles((theme) => ({
@@ -25,7 +25,7 @@ const AppHeader = () => {
       <Title order={3}>Wordinator</Title>
       <Group spacing="xs">
         <Statistics />
-        <Settings />
+        <ThemeToggle />
       </Group>
     </Header>
   )

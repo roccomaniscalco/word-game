@@ -1,7 +1,5 @@
 import {
-  Card,
   Center,
-  createStyles,
   Grid,
   Stack,
   Text,
@@ -16,27 +14,18 @@ import {
 } from "tabler-icons-react"
 import { useStats } from "../../contexts/StatsContext"
 import AppModal from "../common/AppModal"
+import AppPaper from "../common/AppPaper"
 import StatisticsGuessDistribution from "./StatisticsGuessDistribution"
-
-const useStyles = createStyles((theme) => ({
-  card: {
-    backgroundColor:
-      theme.colorScheme === "dark"
-        ? theme.colors.dark[6]
-        : theme.colors.gray[2],
-  },
-}))
 
 const Statistics = () => {
   const theme = useMantineTheme()
-  const { classes } = useStyles()
   const { stats } = useStats()
 
   return (
     <AppModal title="statistics" Icon={ChartBarIcon}>
       <Grid>
         <Grid.Col span={6}>
-          <Card className={classes.card}>
+          <AppPaper>
             <Stack align="center" spacing={5}>
               <Center>
                 <FlameIcon color={theme.colors.red[6]} size={28} />
@@ -48,11 +37,11 @@ const Statistics = () => {
                 Best Streak
               </Text>
             </Stack>
-          </Card>
+          </AppPaper>
         </Grid.Col>
 
         <Grid.Col span={6}>
-          <Card className={classes.card}>
+          <AppPaper>
             <Stack align="center" spacing={5}>
               <Center>
                 <FlameIcon color={theme.colors.red[6]} size={28} />
@@ -64,11 +53,11 @@ const Statistics = () => {
                 Current Streak
               </Text>
             </Stack>
-          </Card>
+          </AppPaper>
         </Grid.Col>
 
         <Grid.Col span={6}>
-          <Card className={classes.card}>
+          <AppPaper>
             <Stack align="center" spacing={5}>
               <Center>
                 <Title order={2} mr={5}>
@@ -83,11 +72,11 @@ const Statistics = () => {
                 Percentage Won
               </Text>
             </Stack>
-          </Card>
+          </AppPaper>
         </Grid.Col>
 
         <Grid.Col span={6}>
-          <Card className={classes.card}>
+          <AppPaper>
             <Stack align="center" spacing={5}>
               <Center>
                 <DeviceGamepadIcon color={theme.colors.yellow[6]} size={28} />
@@ -99,16 +88,16 @@ const Statistics = () => {
                 Games Played
               </Text>
             </Stack>
-          </Card>
+          </AppPaper>
         </Grid.Col>
 
         <Grid.Col>
-          <Card className={classes.card}>
+          <AppPaper>
             <Text size="sm" align="center" pb="xs">
               Guess Distribution
             </Text>
             <StatisticsGuessDistribution />
-          </Card>
+          </AppPaper>
         </Grid.Col>
       </Grid>
     </AppModal>

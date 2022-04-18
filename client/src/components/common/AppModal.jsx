@@ -1,7 +1,5 @@
 import { ActionIcon, Modal, Text } from "@mantine/core"
-import { elementType } from "prop-types"
-import { string } from "prop-types"
-import { node } from "prop-types"
+import { elementType, node, string } from "prop-types"
 import { useState } from "react"
 
 const AppModal = ({ children, Icon, title }) => {
@@ -25,7 +23,7 @@ const AppModal = ({ children, Icon, title }) => {
       </Modal>
 
       <ActionIcon variant="default" size="lg" radius="md" onClick={handleOpen}>
-        <Icon size={22} />
+        <Icon  />
       </ActionIcon>
     </>
   )

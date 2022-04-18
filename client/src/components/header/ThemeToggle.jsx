@@ -17,7 +17,7 @@ const ThemeToggle = () => {
             : theme.colors.blue[6],
       })}
     >
-      {colorScheme === "dark" ? <SunIcon size={22} /> : <MoonIcon size={22} />}
+      {colorScheme === "dark" ? <SunIcon /> : <MoonIcon />}
     </ActionIcon>
   )
 }

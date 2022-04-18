@@ -1,21 +1,25 @@
-import { Box, Divider, Group, Progress, Stack, Text } from "@mantine/core"
+import {
+  Box,
+  Group,
+  Progress,
+  Stack,
+  Text,
+  useMantineTheme,
+} from "@mantine/core"
 import React from "react"
 import { useStats } from "../../contexts/StatsContext"
 
 const StatisticsGuessDistribution = () => {
+  const theme = useMantineTheme()
   const { stats } = useStats()
 
-  const gamesPlayed = Object.values(stats.guessDistribution).reduce(
-    (sum, guessCount) => sum + guessCount,
-    0
-  )
+  const gamesPlayed = stats.roundsLost + stats.roundsWon
 
   return (
     <>
       <Text size="xs" align="center" pb="xs">
         Guess Distribution
       </Text>
-      <Divider mb="sm" size="sm" variant="dashed"/>
       <Stack spacing="xs">
         {Object.entries(stats.guessDistribution).map(([guess, count]) => (
           <Group key={guess} sx={{ flex: 1 }}>
@@ -28,13 +32,17 @@ const StatisticsGuessDistribution = () => {
                 label={count}
                 size="xl"
                 radius="xl"
-                sx={{ backgroundColor: "transparent" }}
+                sx={{
+                  backgroundColor:
+                    theme.colorScheme === "dark"
+                      ? theme.colors.dark[4]
+                      : theme.colors.gray[4],
+                }}
               />
             </Box>
           </Group>
         ))}
       </Stack>
-      <Divider mt="sm" size="sm" variant="dashed"/>
     </>
   )
 }

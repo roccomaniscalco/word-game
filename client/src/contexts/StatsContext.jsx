@@ -32,7 +32,7 @@ const statsReducer = (state, action) => {
     case "lose":
       return { ...state, roundsLost: state.roundsLost + 1, currentStreak: 0 }
     case "reset":
-      return initStats(action.payload)
+      return initStats(action.stats)
     default:
       throw new Error()
   }

@@ -17,7 +17,6 @@ const ThemeProvider = ({ children }) => {
       toggleColorScheme={toggleColorScheme}
     >
       <MantineProvider
-        withGlobalStyles
         withNormalizeCSS
         theme={{ colorScheme }}
         styles={{
@@ -25,7 +24,7 @@ const ThemeProvider = ({ children }) => {
             root: {
               color: theme.colorScheme === "dark" ? theme.white : theme.black,
             },
-          })
+          }),
         }}
       >
         <Global
@@ -35,6 +34,17 @@ const ThemeProvider = ({ children }) => {
                 theme.colorScheme === "dark"
                   ? theme.colors.dark[9]
                   : theme.white,
+            },
+            // override disabled Key styles
+            ".key.mantine-Button-root:disabled": {
+              backgroundColor:
+                theme.colorScheme === "dark"
+                  ? theme.colors.dark[6]
+                  : theme.colors.gray[2],
+              color:
+                theme.colorScheme === "dark"
+                  ? theme.colors.dark[4]
+                  : theme.colors.gray[4],
             },
           })}
         />

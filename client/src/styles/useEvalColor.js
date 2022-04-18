@@ -11,7 +11,7 @@ const useEvalColor = () => {
 
     UNUSED:
       theme.colorScheme === "dark"
-        ? theme.colors.dark[6]
+        ? theme.colors.dark[4]
         : theme.colors.dark[0],
 
     USED:

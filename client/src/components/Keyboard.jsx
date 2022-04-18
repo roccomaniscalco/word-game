@@ -17,7 +17,7 @@ const Keyboard = ({ keys, onClick, currentRow }) => {
       columns={20}
       gutter={4}
       justify="center"
-      style={{ aspectRatio: "10/3" }}
+      style={{ aspectRatio: "9/3" }}
     >
       {firstRow.map(({ letter, evaluation }) => (
         <Grid.Col key={letter} span={2}>

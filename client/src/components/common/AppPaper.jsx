@@ -21,7 +21,7 @@ const AppPaper = ({ children, ...props }) => {
 }
 
 AppPaper.propTypes = {
-    children: node
+  children: node,
 }
 
 export default AppPaper

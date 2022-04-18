@@ -6,9 +6,8 @@ const InstructionsGameRow = ({ row }) => {
   return (
     <Paper
       p="sm"
-      radius="md"
-      withBorder
       sx={(theme) => ({
+        maxWidth: 300,
         backgroundColor:
           theme.colorScheme === "dark"
             ? theme.colors.dark[9]

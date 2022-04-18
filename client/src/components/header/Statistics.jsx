@@ -40,7 +40,15 @@ const Statistics = () => {
 
   return (
     <>
-      <Modal opened={isOpened} onClose={handleClose} title="Statistics">
+      <Modal
+        opened={isOpened}
+        onClose={handleClose}
+        title={
+          <Text color="dimmed" size="xs" transform="uppercase" weight={700}>
+            statistics
+          </Text>
+        }
+      >
         <Grid>
           <Grid.Col span={6}>
             <Card className={classes.card}>

@@ -31,7 +31,7 @@ const exampleRow3 = [
 
 const Instructions = () => {
   return (
-    <AppModal Icon={HelpIcon} title="instructions">
+    <AppModal Icon={HelpIcon} title="Instructions">
       <Text size="sm" pb="xs">
         Guess the word in six tries.
       </Text>

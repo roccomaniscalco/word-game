@@ -42,7 +42,7 @@ const Keyboard = ({ keys, onClick, currentRow }) => {
       ))}
 
       <Grid.Col span={3}>
-        <Key code="backspace" Icon={BackspaceIcon} />
+        <Key code="backspace" Icon={BackspaceIcon} aria-label="Backspace" />
       </Grid.Col>
     </Grid>
   )

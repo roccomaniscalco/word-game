@@ -35,6 +35,7 @@ const AppModal = ({ children, Icon, title }) => {
         radius="md"
         onClick={handleOpen}
         ref={actionIconRef}
+        aria-label={title}
       >
         <Icon />
       </ActionIcon>

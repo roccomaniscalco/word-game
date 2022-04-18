@@ -22,7 +22,7 @@ const Statistics = () => {
   const { stats } = useStats()
 
   return (
-    <AppModal title="statistics" Icon={ChartBarIcon}>
+    <AppModal title="Statistics" Icon={ChartBarIcon}>
       <Grid>
         <Grid.Col span={6}>
           <AppPaper>

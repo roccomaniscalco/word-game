@@ -24,6 +24,7 @@ const ThemeToggle = () => {
             : theme.colors.blue[6],
       })}
       ref={actionIconRef}
+      aria-label={colorScheme === "dark" ? "Enable Light Mode" : "Enable Dark Mode"}
     >
       {colorScheme === "dark" ? <SunIcon /> : <MoonIcon />}
     </ActionIcon>

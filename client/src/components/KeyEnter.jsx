@@ -23,6 +23,7 @@ const KeyEnter = ({ currentRow }) => {
         },
         transition: "none",
       })}
+      aria-label="Enter"
     />
   )
 }

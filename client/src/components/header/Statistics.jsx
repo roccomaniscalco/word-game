@@ -51,7 +51,7 @@ const Statistics = () => {
                     {stats.highestStreak}
                   </Title>
                 </Center>
-                <Text size="xs" align="center">
+                <Text size="sm" align="center">
                   Best Streak
                 </Text>
               </Stack>
@@ -67,7 +67,7 @@ const Statistics = () => {
                     {stats.currentStreak}
                   </Title>
                 </Center>
-                <Text size="xs" align="center">
+                <Text size="sm" align="center">
                   Current Streak
                 </Text>
               </Stack>
@@ -86,7 +86,7 @@ const Statistics = () => {
                   </Title>
                   <PercentageIcon color={theme.colors.violet[6]} size={28} />
                 </Center>
-                <Text size="xs" align="center">
+                <Text size="sm" align="center">
                   Percentage Won
                 </Text>
               </Stack>
@@ -102,7 +102,7 @@ const Statistics = () => {
                     {stats.roundsWon + stats.roundsLost}
                   </Title>
                 </Center>
-                <Text size="xs" align="center">
+                <Text size="sm" align="center">
                   Games Played
                 </Text>
               </Stack>
@@ -111,6 +111,9 @@ const Statistics = () => {
 
           <Grid.Col>
             <Card className={classes.card}>
+              <Text size="sm" align="center" pb="xs">
+                Guess Distribution
+              </Text>
               <StatisticsGuessDistribution />
             </Card>
           </Grid.Col>

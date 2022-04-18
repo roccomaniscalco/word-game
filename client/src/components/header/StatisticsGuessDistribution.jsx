@@ -16,34 +16,29 @@ const StatisticsGuessDistribution = () => {
   const gamesPlayed = stats.roundsLost + stats.roundsWon
 
   return (
-    <>
-      <Text size="xs" align="center" pb="xs">
-        Guess Distribution
-      </Text>
-      <Stack spacing="xs">
-        {Object.entries(stats.guessDistribution).map(([guess, count]) => (
-          <Group key={guess} sx={{ flex: 1 }}>
-            <Text style={{ width: 6 }} size="sm" weight={700} align="center">
-              {guess}
-            </Text>
-            <Box sx={{ flex: 1 }}>
-              <Progress
-                value={Math.round((count / gamesPlayed) * 100)}
-                label={count}
-                size="xl"
-                radius="xl"
-                sx={{
-                  backgroundColor:
-                    theme.colorScheme === "dark"
-                      ? theme.colors.dark[4]
-                      : theme.colors.gray[4],
-                }}
-              />
-            </Box>
-          </Group>
-        ))}
-      </Stack>
-    </>
+    <Stack spacing="xs">
+      {Object.entries(stats.guessDistribution).map(([guess, count]) => (
+        <Group key={guess} sx={{ flex: 1 }}>
+          <Text style={{ width: 6 }} size="sm" weight={700} align="center">
+            {guess}
+          </Text>
+          <Box sx={{ flex: 1 }}>
+            <Progress
+              value={Math.round((count / gamesPlayed) * 100)}
+              label={count}
+              size="xl"
+              radius="xl"
+              sx={{
+                backgroundColor:
+                  theme.colorScheme === "dark"
+                    ? theme.colors.dark[4]
+                    : theme.colors.gray[4],
+              }}
+            />
+          </Box>
+        </Group>
+      ))}
+    </Stack>
   )
 }
 

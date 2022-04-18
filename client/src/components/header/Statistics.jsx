@@ -40,11 +40,7 @@ const Statistics = () => {
 
   return (
     <>
-      <Modal
-        opened={isOpened}
-        onClose={handleClose}
-        title="Statistics"
-      >
+      <Modal opened={isOpened} onClose={handleClose} title="Statistics">
         <Grid>
           <Grid.Col span={6}>
             <Card className={classes.card}>
@@ -86,12 +82,12 @@ const Statistics = () => {
                     {Math.round(
                       (stats.roundsWon / (stats.roundsWon + stats.roundsLost)) *
                         100
-                    )}
+                    ) || 0}
                   </Title>
                   <PercentageIcon color={theme.colors.violet[6]} size={28} />
                 </Center>
                 <Text size="xs" align="center">
-                  Win Percentage
+                  Percentage Won
                 </Text>
               </Stack>
             </Card>

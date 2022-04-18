@@ -13,7 +13,6 @@ const useStyles = createStyles((theme, { colI, evaluation }) => {
     "0%": {
       backgroundColor: evalColor.TBD,
       borderWidth: "2px",
-      transform: "rotateX(0)",
     },
     "49.99%": {
       backgroundColor: evalColor.TBD,
@@ -27,7 +26,6 @@ const useStyles = createStyles((theme, { colI, evaluation }) => {
     "100%": {
       backgroundColor: evalColor[evaluation],
       borderWidth: "0px",
-      transform: "rotateX(0)",
     },
   })
 

@@ -13,8 +13,6 @@ const StatisticsGuessDistribution = () => {
   const theme = useMantineTheme()
   const { stats } = useStats()
 
-  const gamesPlayed = stats.roundsLost + stats.roundsWon
-
   return (
     <Stack spacing="xs">
       {Object.entries(stats.guessDistribution).map(([guess, count]) => (
@@ -24,7 +22,7 @@ const StatisticsGuessDistribution = () => {
           </Text>
           <Box sx={{ flex: 1 }}>
             <Progress
-              value={Math.round((count / gamesPlayed) * 100)}
+              value={Math.round((count / stats.roundsWon) * 100)}
               label={count}
               size="xl"
               radius="xl"

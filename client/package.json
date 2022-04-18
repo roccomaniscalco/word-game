@@ -10,12 +10,6 @@
   "dependencies": {
     "@mantine/core": "^4.1.1",
     "@mantine/hooks": "^4.1.1",
-    "@mantine/modals": "^4.1.1",
-    "eslint": "^8.12.0",
-    "eslint-config-prettier": "^8.5.0",
-    "eslint-plugin-prettier": "^4.0.0",
-    "eslint-plugin-react": "^7.29.4",
-    "prettier": "^2.6.1",
     "prop-types": "^15.8.1",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
@@ -23,6 +17,11 @@
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^1.0.7",
-    "vite": "^2.9.0"
+    "vite": "^2.9.0",
+    "eslint": "^8.12.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.29.4",
+    "prettier": "^2.6.1"
   }
 }

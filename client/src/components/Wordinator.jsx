@@ -1,5 +1,4 @@
 import { Box, Center, Container, Stack } from "@mantine/core"
-import React from "react"
 import { status } from "../hooks/useRound"
 import useWordinator from "../hooks/useWordinator"
 import GameBoard from "./GameBoard"

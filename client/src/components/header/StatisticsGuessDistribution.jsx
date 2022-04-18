@@ -6,7 +6,6 @@ import {
   Text,
   useMantineTheme,
 } from "@mantine/core"
-import React from "react"
 import { useStats } from "../../contexts/StatsContext"
 
 const StatisticsGuessDistribution = () => {
@@ -16,11 +15,11 @@ const StatisticsGuessDistribution = () => {
   return (
     <Stack spacing="xs">
       {Object.entries(stats.guessDistribution).map(([guess, count]) => (
-        <Group key={guess} sx={{ flex: 1 }}>
+        <Group key={guess}>
           <Text style={{ width: 6 }} size="sm" weight={700} align="center">
             {guess}
           </Text>
-          <Box sx={{ flex: 1 }}>
+          <Box style={{ flex: 1 }}>
             <Progress
               value={Math.round((count / stats.roundsWon) * 100)}
               label={count}

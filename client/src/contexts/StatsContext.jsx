@@ -7,6 +7,7 @@ const initialStats = {
   roundsLost: 0,
   currentStreak: 0,
   highestStreak: 0,
+  guessDistribution: { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0 },
 }
 
 const initStats = (initialStats) =>
@@ -23,6 +24,10 @@ const statsReducer = (state, action) => {
           state.currentStreak + 1 > state.highestStreak
             ? state.currentStreak + 1
             : state.highestStreak,
+        guessDistribution: {
+          ...state.guessDistribution,
+          [action.guess]: state.guessDistribution[action.guess] + 1,
+        },
       }
     case "lose":
       return { ...state, roundsLost: state.roundsLost + 1, currentStreak: 0 }
@@ -47,7 +52,7 @@ export const StatsProvider = ({ children }) => {
 
   useWindowEvent("storage", (event) => {
     if (event.storageArea === window.localStorage && event.key === "stats") {
-      dispatch({ type: "reset", payload: event.newValue ?? undefined })
+      dispatch({ type: "reset", stats: event.newValue ?? undefined })
     }
   })
 

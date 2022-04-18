@@ -19,18 +19,18 @@ const useRound = () => {
     defaultValue: status.TBD,
   })
 
-  const win = () => {
+  const win = (guess) => {
     setRoundStatus(status.WIN)
-    dispatch({ type: status.WIN })
+    dispatch({ type: status.WIN, guess: guess })
   }
   const lose = () => {
     setRoundStatus(status.LOSE)
     dispatch({ type: status.LOSE })
   }
 
-  const updateRound = (gameBoard, currentRow) => {
-    const currentWord = currentRow.map(({ letter }) => letter).join("")
-    if (currentWord === correctWord) win()
+  const updateRound = (gameBoard, rowI) => {
+    const currentWord = gameBoard[rowI].map(({ letter }) => letter).join("")
+    if (currentWord === correctWord) win(rowI + 1) 
     else if (gameBoard[5].length !== 0) lose()
   }
 

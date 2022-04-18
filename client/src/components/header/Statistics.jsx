@@ -1,9 +1,9 @@
 import {
   ActionIcon,
   Card,
+  Center,
   createStyles,
   Grid,
-  Group,
   Modal,
   Stack,
   Text,
@@ -18,6 +18,7 @@ import {
   Percentage as PercentageIcon,
 } from "tabler-icons-react"
 import { useStats } from "../../contexts/StatsContext"
+import StatisticsGuessDistribution from "./StatisticsGuessDistribution"
 
 const useStyles = createStyles((theme) => ({
   card: {
@@ -39,27 +40,37 @@ const Statistics = () => {
 
   return (
     <>
-      <Modal opened={isOpened} onClose={handleClose} title="Statistics">
+      <Modal
+        opened={isOpened}
+        onClose={handleClose}
+        title="Statistics"
+      >
         <Grid>
-          <Grid.Col>
-            <Card className={classes.card} py="sm">
-              <Group position="apart">
-                <Text>Highest Streak</Text>
-                <Group spacing={5}>
-                  <FlameIcon color={theme.colors.red[6]} />
-                  <Title order={2}>{stats.highestStreak}</Title>
-                </Group>
-              </Group>
+          <Grid.Col span={6}>
+            <Card className={classes.card}>
+              <Stack align="center" spacing={5}>
+                <Center>
+                  <FlameIcon color={theme.colors.red[6]} size={28} />
+                  <Title order={2} ml={5}>
+                    {stats.highestStreak}
+                  </Title>
+                </Center>
+                <Text size="xs" align="center">
+                  Best Streak
+                </Text>
+              </Stack>
             </Card>
           </Grid.Col>
 
-          <Grid.Col span={4}>
-            <Card className={classes.card} px="xs">
+          <Grid.Col span={6}>
+            <Card className={classes.card}>
               <Stack align="center" spacing={5}>
-                <Group spacing={5}>
-                  <FlameIcon color={theme.colors.red[6]} />
-                  <Title order={3}>{stats.currentStreak}</Title>
-                </Group>
+                <Center>
+                  <FlameIcon color={theme.colors.red[6]} size={28} />
+                  <Title order={2} ml={5}>
+                    {stats.currentStreak}
+                  </Title>
+                </Center>
                 <Text size="xs" align="center">
                   Current Streak
                 </Text>
@@ -67,18 +78,18 @@ const Statistics = () => {
             </Card>
           </Grid.Col>
 
-          <Grid.Col span={4}>
-            <Card className={classes.card} px="xs">
+          <Grid.Col span={6}>
+            <Card className={classes.card}>
               <Stack align="center" spacing={5}>
-                <Group spacing={5}>
-                  <Title order={3}>
+                <Center>
+                  <Title order={2} mr={5}>
                     {Math.round(
                       (stats.roundsWon / (stats.roundsWon + stats.roundsLost)) *
                         100
                     )}
                   </Title>
-                  <PercentageIcon color={theme.colors.violet[6]} />
-                </Group>
+                  <PercentageIcon color={theme.colors.violet[6]} size={28} />
+                </Center>
                 <Text size="xs" align="center">
                   Win Percentage
                 </Text>
@@ -86,17 +97,25 @@ const Statistics = () => {
             </Card>
           </Grid.Col>
 
-          <Grid.Col span={4}>
-            <Card className={classes.card} px="xs">
+          <Grid.Col span={6}>
+            <Card className={classes.card}>
               <Stack align="center" spacing={5}>
-                <Group spacing={5}>
-                  <DeviceGamepadIcon color={theme.colors.blue[6]} />
-                  <Title order={3}>{stats.roundsWon + stats.roundsLost}</Title>
-                </Group>
+                <Center>
+                  <DeviceGamepadIcon color={theme.colors.yellow[6]} size={28} />
+                  <Title order={2} ml={5}>
+                    {stats.roundsWon + stats.roundsLost}
+                  </Title>
+                </Center>
                 <Text size="xs" align="center">
                   Games Played
                 </Text>
               </Stack>
+            </Card>
+          </Grid.Col>
+
+          <Grid.Col>
+            <Card className={classes.card}>
+              <StatisticsGuessDistribution />
             </Card>
           </Grid.Col>
         </Grid>

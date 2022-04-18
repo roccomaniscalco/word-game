@@ -41,7 +41,7 @@ const useGameBoard = (isRoundOver, correctWord, updateRound, updateKeys) => {
     setGameBoard(newGameBoard)
 
     updateKeys(newGameBoard[rowI])
-    updateRound(newGameBoard, newGameBoard[rowI])
+    updateRound(newGameBoard, rowI)
 
     if (rowI < gameBoard.length - 1) setRowI((prevRowI) => prevRowI + 1)
   }

@@ -1,9 +1,8 @@
 import { Box, createStyles, keyframes, Paper, Title } from "@mantine/core"
-import { number, string } from "prop-types"
+import { bool, number, string } from "prop-types"
 import { memo } from "react"
-import { letterEvaluation, roundStatus } from "../constants/propTypes"
+import { letterEvaluation } from "../constants/propTypes"
 import { evals } from "../constants/qwerty"
-import { status } from "../hooks/useRound"
 import useEvalColor from "../styles/useEvalColor"
 
 const useStyles = createStyles((theme, { colI, evaluation }) => {
@@ -104,17 +103,11 @@ const useStyles = createStyles((theme, { colI, evaluation }) => {
   }
 })
 
-const GameTile = ({ letter, evaluation, colI, roundStatus }) => {
+const GameTile = ({ letter, evaluation, colI, shouldBounce }) => {
   const { classes, cx } = useStyles({ evaluation: evaluation, colI })
 
   return (
-    <Box
-      className={cx(
-        roundStatus === status.WIN &&
-          evaluation === evals.CORRECT &&
-          classes.bounce
-      )}
-    >
+    <Box className={cx(shouldBounce && classes.bounce)}>
       <Paper
         className={cx(
           classes.tile,
@@ -132,7 +125,7 @@ GameTile.propTypes = {
   letter: string.isRequired,
   evaluation: letterEvaluation.isRequired,
   colI: number.isRequired,
-  roundStatus: roundStatus.isRequired,
+  shouldBounce: bool,
 }
 
 export default memo(GameTile)

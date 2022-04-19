@@ -1,5 +1,5 @@
 import { createStyles, SimpleGrid } from "@mantine/core"
-import { gameBoard, roundStatus } from "../constants/propTypes"
+import { gameBoard } from "../constants/propTypes"
 import { evals } from "../constants/qwerty"
 import GameTile from "./GameTile"
 
@@ -18,25 +18,32 @@ const fillGameBoard = (gameBoard) =>
     ...Array(5 - row.length).fill({ letter: "", evaluation: evals.TBD }),
   ])
 
-const GameBoard = ({ gameBoard, roundStatus }) => {
+// find row where every tile is correct
+const findWinningRowI = (gameBoard) =>
+  gameBoard.findIndex((row) =>
+    row.every((tile) => tile.evaluation === evals.CORRECT)
+  )
+
+const GameBoard = ({ gameBoard }) => {
   const { classes } = useStyles()
+  const winningRowI = findWinningRowI(gameBoard)
+  console.log(findWinningRowI(gameBoard))
 
   return (
     <SimpleGrid
       cols={5}
       spacing={5}
       className={classes.board}
-      style={{ aspectRatio: "5/6" }} // preserve aspect ratio
+      style={{ aspectRatio: "5/6" }}
     >
-      {fillGameBoard(gameBoard).map((row) =>
-        row.map((tile, i) => (
-          // acceptable use of index for key since row is a consistent size
+      {fillGameBoard(gameBoard).map((row, rowI) =>
+        row.map((tile, colI) => (
           <GameTile
             letter={tile.letter}
             evaluation={tile.evaluation}
-            roundStatus={roundStatus}
-            colI={i}
-            key={i}
+            shouldBounce={rowI === winningRowI}
+            colI={colI}
+            key={colI}
           />
         ))
       )}
@@ -46,7 +53,6 @@ const GameBoard = ({ gameBoard, roundStatus }) => {
 
 GameBoard.propTypes = {
   gameBoard: gameBoard.isRequired,
-  roundStatus: roundStatus.isRequired,
 }
 
 export default GameBoard

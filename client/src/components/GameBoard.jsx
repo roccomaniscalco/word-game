@@ -26,8 +26,9 @@ const findWinningRowI = (gameBoard) =>
 
 const GameBoard = ({ gameBoard }) => {
   const { classes } = useStyles()
-  const winningRowI = findWinningRowI(gameBoard)
-  console.log(findWinningRowI(gameBoard))
+  
+  const filledGameBoard = fillGameBoard(gameBoard)
+  const winningRowI = findWinningRowI(filledGameBoard)
 
   return (
     <SimpleGrid
@@ -36,7 +37,7 @@ const GameBoard = ({ gameBoard }) => {
       className={classes.board}
       style={{ aspectRatio: "5/6" }}
     >
-      {fillGameBoard(gameBoard).map((row, rowI) =>
+      {filledGameBoard.map((row, rowI) =>
         row.map((tile, colI) => (
           <GameTile
             letter={tile.letter}

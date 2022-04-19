@@ -1,6 +1,6 @@
 import { AppShell } from "@mantine/core"
 import AppHeader from "./components/header/AppHeader"
-import Wordinator from "./components/Wordinator"
+import Game from "./components/Game"
 
 function App() {
   return (
@@ -11,7 +11,7 @@ function App() {
         body: { height: "calc(100vh - 50px)" }, // offset body by Header height
       }}
     >
-      <Wordinator />
+      <Game />
     </AppShell>
   )
 }

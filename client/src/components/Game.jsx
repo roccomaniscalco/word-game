@@ -1,11 +1,11 @@
 import { Box, Center, Container, Stack } from "@mantine/core"
 import { status } from "../hooks/useRound"
-import useWordinator from "../hooks/useWordinator"
+import useGameLogic from "../hooks/useGameLogic"
 import GameBoard from "./GameBoard"
 import Keyboard from "./Keyboard"
 import NewRoundButton from "./NewRoundButton"
 
-const Wordinator = () => {
+const Game = () => {
   const {
     gameBoard,
     currentRow,
@@ -14,7 +14,7 @@ const Wordinator = () => {
     roundStatus,
     handleKeyClick,
     resetWordinator,
-  } = useWordinator()
+  } = useGameLogic()
 
   return (
     <Container
@@ -44,4 +44,4 @@ const Wordinator = () => {
   )
 }
 
-export default Wordinator
+export default Game

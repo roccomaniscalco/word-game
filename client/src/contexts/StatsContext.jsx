@@ -10,6 +10,7 @@ const initialStats = {
   guessDistribution: { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0 },
 }
 
+// get stats from localStorage or default to initialStats
 const initStats = (initialStats) =>
   JSON.parse(localStorage.getItem("stats")) || initialStats
 
@@ -46,10 +47,12 @@ const StatsContext = createContext({
 export const StatsProvider = ({ children }) => {
   const [stats, dispatch] = useReducer(statsReducer, initialStats, initStats)
 
+  // set stats to localStorage when a change is made
   useEffect(() => {
     localStorage.setItem("stats", JSON.stringify(stats))
   }, [stats])
 
+  // synchronize stats across open tabs when localStorage is modified
   useWindowEvent("storage", (event) => {
     if (event.storageArea === window.localStorage && event.key === "stats") {
       dispatch({ type: "reset", stats: event.newValue ?? undefined })

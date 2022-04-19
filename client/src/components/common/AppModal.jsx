@@ -8,7 +8,6 @@ const AppModal = ({ children, Icon, title }) => {
 
   const handleClose = () => {
     setIsOpened(false)
-    
   }
   const handleOpen = () => {
     setIsOpened(true)

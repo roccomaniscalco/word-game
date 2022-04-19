@@ -30,7 +30,7 @@ const Game = () => {
           />
         )}
         <Center style={{ flex: 1, width: "100%" }}>
-          <GameBoard gameBoard={gameBoard} />
+          <GameBoard gameBoard={gameBoard} roundStatus={roundStatus}/>
         </Center>
         <Box>
           <Keyboard

@@ -1,6 +1,7 @@
 import { Button, createStyles, keyframes } from "@mantine/core"
-import { func, oneOf, string } from "prop-types"
+import { func, string } from "prop-types"
 import { PlayerPlay as PlayerPlayIcon } from "tabler-icons-react"
+import { roundStatus } from "../constants/propTypes"
 import { status } from "../hooks/useRound"
 
 // plays when component mounts
@@ -16,7 +17,7 @@ const useStyles = createStyles({
     zIndex: 100,
 
     opacity: 0,
-    animation: `${slideDown} 250ms ease 1250ms forwards`,
+    animation: `${slideDown} 250ms ease 1300ms forwards`,
   },
 })
 
@@ -41,7 +42,7 @@ const NewRoundButton = ({ roundStatus, correctWord, onClick }) => {
 }
 
 NewRoundButton.propTypes = {
-  roundStatus: oneOf(Object.values(status)).isRequired,
+  roundStatus: roundStatus.isRequired,
   correctWord: string.isRequired,
   onClick: func.isRequired,
 }

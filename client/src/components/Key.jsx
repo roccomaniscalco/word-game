@@ -38,7 +38,7 @@ const useStyles = createStyles((theme, { evaluation }) => {
     },
 
     fill: {
-      animation: `${fill} 0ms forwards ${1250}ms`,
+      animation: `${fill} 0ms forwards 1300ms`,
     },
   }
 })

@@ -1,5 +1,6 @@
 import { SimpleGrid } from "@mantine/core"
 import { gameBoardRow } from "../../constants/propTypes"
+import { status } from "../../hooks/useRound"
 import GameTile from "../GameTile"
 
 const InstructionsGameRow = ({ row }) => {
@@ -14,6 +15,7 @@ const InstructionsGameRow = ({ row }) => {
         <GameTile
           letter={tile.letter}
           evaluation={tile.evaluation}
+          roundStatus={status.TBD}
           key={i}
           colI={0}
         />

@@ -1,14 +1,15 @@
-import { Card, createStyles, keyframes, Title } from "@mantine/core"
+import { Box, createStyles, keyframes, Paper, Title } from "@mantine/core"
 import { number, string } from "prop-types"
 import { memo } from "react"
-import { letterEvaluation } from "../constants/propTypes"
+import { letterEvaluation, roundStatus } from "../constants/propTypes"
 import { evals } from "../constants/qwerty"
+import { status } from "../hooks/useRound"
 import useEvalColor from "../styles/useEvalColor"
 
 const useStyles = createStyles((theme, { colI, evaluation }) => {
   const evalColor = useEvalColor()
 
-  // plays when evaluation is not "tbd"
+  // plays when tile evaluation is not "tbd"
   const flip = keyframes({
     "0%": {
       backgroundColor: evalColor.TBD,
@@ -29,7 +30,7 @@ const useStyles = createStyles((theme, { colI, evaluation }) => {
     },
   })
 
-  // plays when letter is not an empty string
+  // plays when tile letter is not an empty string
   const pop = keyframes({
     "0%": {
       transform: "scale(0.8)",
@@ -49,8 +50,32 @@ const useStyles = createStyles((theme, { colI, evaluation }) => {
     },
   })
 
+  // plays when word is correct
+  const bounce = keyframes({
+    "20%": {
+      transform: "translateY(0)",
+    },
+    "40%": {
+      transform: "translateY(-30px)",
+    },
+    "50%": {
+      transform: "translateY(5px)",
+    },
+    "60%": {
+      transform: "translateY(-15px)",
+    },
+    "80%": {
+      transform: "translateY(2px)",
+    },
+    "100%": {
+      transform: "translateY(0)",
+    },
+  })
+
   return {
     tile: {
+      width: "100%",
+      height: "100%",
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
@@ -72,22 +97,34 @@ const useStyles = createStyles((theme, { colI, evaluation }) => {
     flip: {
       animation: `${flip} 500ms ease-in-out forwards ${colI * 200}ms`,
     },
+
+    bounce: {
+      animation: `${bounce} 1000ms ease-in-out ${colI * 100 + 1300}ms`,
+    },
   }
 })
 
-const GameTile = ({ letter, evaluation, colI }) => {
+const GameTile = ({ letter, evaluation, colI, roundStatus }) => {
   const { classes, cx } = useStyles({ evaluation: evaluation, colI })
 
   return (
-    <Card
+    <Box
       className={cx(
-        classes.tile,
-        Boolean(letter) && classes.pop,
-        evaluation !== evals.TBD && classes.flip
+        roundStatus === status.WIN &&
+          evaluation === evals.CORRECT &&
+          classes.bounce
       )}
     >
-      <Title order={1}>{letter}</Title>
-    </Card>
+      <Paper
+        className={cx(
+          classes.tile,
+          Boolean(letter) && classes.pop,
+          evaluation !== evals.TBD && classes.flip
+        )}
+      >
+        <Title order={1}>{letter}</Title>
+      </Paper>
+    </Box>
   )
 }
 
@@ -95,6 +132,7 @@ GameTile.propTypes = {
   letter: string.isRequired,
   evaluation: letterEvaluation.isRequired,
   colI: number.isRequired,
+  roundStatus: roundStatus.isRequired,
 }
 
 export default memo(GameTile)

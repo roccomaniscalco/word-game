@@ -5765,3 +5765,12 @@ export const GET_RANDOM_WORD = () => {
   const randomIndex = Math.round(Math.random() * WORDS.size)
   return Array.from(WORDS)[randomIndex]
 }
+
+export const GET_LETTER_TO_COUNT = (row) =>
+  row.reduce(
+    (letterToCount, letter) => ({
+      ...letterToCount,
+      [letter]: ++letterToCount[letter] || 1
+    }),
+    {}
+  )

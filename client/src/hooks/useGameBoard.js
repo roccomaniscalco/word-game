@@ -1,15 +1,31 @@
 import { useLocalStorageValue } from "@mantine/hooks"
 import { evals } from "../constants/qwerty"
-import { IS_WORD } from "../constants/words"
+import { GET_LETTER_TO_COUNT, IS_WORD } from "../constants/words"
 
-const evaluateRow = (currentRow, correctWord) =>
-  currentRow.map(({ letter }, i) => {
-    if (correctWord.split("")[i] === letter)
+const evaluateRow = (currentRow, correctWord) => {
+  const correctLetterToCount = GET_LETTER_TO_COUNT(correctWord.split(""))
+  const evaluatedLetterToCount = {}
+
+  let evaluatedRow = currentRow.map(({ letter }, i) => {
+    if (correctWord[i] === letter) {
+      evaluatedLetterToCount[letter] = ++evaluatedLetterToCount[letter] || 1
       return { letter, evaluation: evals.CORRECT }
-    if (correctWord.split("").includes(letter))
+    }
+  })
+
+  evaluatedRow = currentRow.map(({ letter }, i) => {
+    if (evaluatedRow[i]) return evaluatedRow[i]
+    if (evaluatedLetterToCount[letter] === correctLetterToCount[letter])
+      return { letter, evaluation: evals.UNUSED }
+    if (correctWord.includes(letter)) {
+      evaluatedLetterToCount[letter] = ++evaluatedLetterToCount[letter] || 1
       return { letter, evaluation: evals.USED }
+    }
     return { letter, evaluation: evals.UNUSED }
   })
+
+  return evaluatedRow
+}
 
 const useGameBoard = (isRoundOver, correctWord, updateRound, updateKeys) => {
   const [rowI, setRowI] = useLocalStorageValue({ key: "rowI", defaultValue: 0 })
@@ -57,7 +73,7 @@ const useGameBoard = (isRoundOver, correctWord, updateRound, updateKeys) => {
     addTile,
     removeTile,
     submitRow,
-    resetGameBoard
+    resetGameBoard,
   }
 }
 

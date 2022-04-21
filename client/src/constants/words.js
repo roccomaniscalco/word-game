@@ -1,3 +1,5 @@
+import { evals } from "./qwerty"
+
 const WORDS = new Set([
   "which",
   "there",
@@ -5766,11 +5768,36 @@ export const GET_RANDOM_WORD = () => {
   return Array.from(WORDS)[randomIndex]
 }
 
-export const GET_LETTER_TO_COUNT = (row) =>
+const getLetterToCount = (row) =>
   row.reduce(
     (letterToCount, letter) => ({
       ...letterToCount,
-      [letter]: ++letterToCount[letter] || 1
+      [letter]: ++letterToCount[letter] || 1,
     }),
     {}
   )
+
+export const EVALUATE_ROW = (currentRow, correctWord) => {
+  const correctLetterToCount = getLetterToCount(correctWord.split(""))
+  const evaluatedLetterToCount = {}
+
+  let evaluatedRow = currentRow.map(({ letter }, i) => {
+    if (correctWord[i] === letter) {
+      evaluatedLetterToCount[letter] = ++evaluatedLetterToCount[letter] || 1
+      return { letter, evaluation: evals.CORRECT }
+    }
+  })
+
+  evaluatedRow = currentRow.map(({ letter }, i) => {
+    if (evaluatedRow[i]) return evaluatedRow[i]
+    if (evaluatedLetterToCount[letter] === correctLetterToCount[letter])
+      return { letter, evaluation: evals.UNUSED }
+    if (correctWord.includes(letter)) {
+      evaluatedLetterToCount[letter] = ++evaluatedLetterToCount[letter] || 1
+      return { letter, evaluation: evals.USED }
+    }
+    return { letter, evaluation: evals.UNUSED }
+  })
+
+  return evaluatedRow
+}

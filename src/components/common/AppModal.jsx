@@ -1,9 +1,10 @@
 import { ActionIcon, Modal, Text } from "@mantine/core"
+import { bool } from "prop-types"
 import { elementType, node, string } from "prop-types"
 import { useRef, useState } from "react"
 
-const AppModal = ({ children, Icon, title }) => {
-  const [isOpened, setIsOpened] = useState(false)
+const AppModal = ({ children, Icon, title, openInitially }) => {
+  const [isOpened, setIsOpened] = useState(Boolean(openInitially))
   const actionIconRef = useRef()
 
   const handleClose = () => {
@@ -46,6 +47,7 @@ AppModal.propTypes = {
   children: node.isRequired,
   Icon: elementType.isRequired,
   title: string.isRequired,
+  OpenInitially: bool
 }
 
 export default AppModal

@@ -1,6 +1,7 @@
 import { Divider, Text } from "@mantine/core"
 import { Help as HelpIcon } from "tabler-icons-react"
 import { evals } from "../../constants/qwerty"
+import useHasVisited from "../../hooks/useHasVisited"
 import AppModal from "../common/AppModal"
 import InstructionsExplicitWarning from "./InstructionsExplicitWarning"
 import InstructionsGameRow from "./InstructionsGameRow"
@@ -30,8 +31,10 @@ const exampleRow3 = [
 ]
 
 const Instructions = () => {
+  const hasVisited = useHasVisited()
+
   return (
-    <AppModal Icon={HelpIcon} title="Instructions">
+    <AppModal Icon={HelpIcon} title="Instructions" openInitially={!hasVisited}>
       <Text size="sm" pb="xs">
         Guess the word in six tries.
       </Text>

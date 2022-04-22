@@ -5781,6 +5781,7 @@ export const EVALUATE_ROW = (currentRow, correctWord) => {
   const correctLetterToCount = getLetterToCount(correctWord.split(""))
   const evaluatedLetterToCount = {}
 
+  // evaluate for correct letters
   let evaluatedRow = currentRow.map(({ letter }, i) => {
     if (correctWord[i] === letter) {
       evaluatedLetterToCount[letter] = ++evaluatedLetterToCount[letter] || 1
@@ -5788,6 +5789,7 @@ export const EVALUATE_ROW = (currentRow, correctWord) => {
     }
   })
 
+  // evaluate for used and unused letters
   evaluatedRow = currentRow.map(({ letter }, i) => {
     if (evaluatedRow[i]) return evaluatedRow[i]
     if (evaluatedLetterToCount[letter] === correctLetterToCount[letter])

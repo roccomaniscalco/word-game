@@ -47,7 +47,7 @@ AppModal.propTypes = {
   children: node.isRequired,
   Icon: elementType.isRequired,
   title: string.isRequired,
-  OpenInitially: bool
+  openInitially: bool
 }
 
 export default AppModal

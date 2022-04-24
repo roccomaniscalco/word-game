@@ -1,11 +1,4 @@
-import {
-  Center,
-  Grid,
-  Stack,
-  Text,
-  Title,
-  useMantineTheme,
-} from "@mantine/core"
+import { Grid, Text, useMantineTheme } from "@mantine/core"
 import {
   ChartBar as ChartBarIcon,
   DeviceGamepad as DeviceGamepadIcon,
@@ -15,6 +8,7 @@ import {
 import { useStats } from "../../contexts/StatsContext"
 import AppModal from "../common/AppModal"
 import AppPaper from "../common/AppPaper"
+import StatBox from "./StatBox"
 import StatisticsGuessDistribution from "./StatisticsGuessDistribution"
 
 const Statistics = () => {
@@ -24,73 +18,30 @@ const Statistics = () => {
   return (
     <AppModal title="Statistics" Icon={ChartBarIcon}>
       <Grid>
-        <Grid.Col span={6}>
-          <AppPaper>
-            <Stack align="center" spacing={5}>
-              <Center>
-                <FlameIcon color={theme.colors.red[6]} size={28} />
-                <Title order={2} ml={5}>
-                  {stats.highestStreak}
-                </Title>
-              </Center>
-              <Text size="sm" align="center">
-                Best Streak
-              </Text>
-            </Stack>
-          </AppPaper>
-        </Grid.Col>
-
-        <Grid.Col span={6}>
-          <AppPaper>
-            <Stack align="center" spacing={5}>
-              <Center>
-                <FlameIcon color={theme.colors.red[6]} size={28} />
-                <Title order={2} ml={5}>
-                  {stats.currentStreak}
-                </Title>
-              </Center>
-              <Text size="sm" align="center">
-                Current Streak
-              </Text>
-            </Stack>
-          </AppPaper>
-        </Grid.Col>
-
-        <Grid.Col span={6}>
-          <AppPaper>
-            <Stack align="center" spacing={5}>
-              <Center>
-                <Title order={2} mr={5}>
-                  {Math.round(
-                    (stats.roundsWon / (stats.roundsWon + stats.roundsLost)) *
-                      100
-                  ) || 0}
-                </Title>
-                <PercentageIcon color={theme.colors.violet[6]} size={28} />
-              </Center>
-              <Text size="sm" align="center">
-                Percentage Won
-              </Text>
-            </Stack>
-          </AppPaper>
-        </Grid.Col>
-
-        <Grid.Col span={6}>
-          <AppPaper>
-            <Stack align="center" spacing={5}>
-              <Center>
-                <DeviceGamepadIcon color={theme.colors.yellow[6]} size={28} />
-                <Title order={2} ml={5}>
-                  {stats.roundsWon + stats.roundsLost}
-                </Title>
-              </Center>
-              <Text size="sm" align="center">
-                Games Played
-              </Text>
-            </Stack>
-          </AppPaper>
-        </Grid.Col>
-
+        <StatBox
+          title="Best Streak"
+          figure={stats.highestStreak}
+          icon={<FlameIcon color={theme.colors.red[6]} size={28} />}
+        />
+        <StatBox
+          title="Current Streak"
+          figure={stats.currentStreak}
+          icon={<FlameIcon color={theme.colors.red[6]} size={28} />}
+        />
+        <StatBox
+          title="Percentage Won"
+          figure={
+            Math.round(
+              (stats.roundsWon / (stats.roundsWon + stats.roundsLost)) * 100
+            ) || 0
+          }
+          icon={<PercentageIcon color={theme.colors.violet[6]} size={28} />}
+        />
+        <StatBox
+          title="Games Played"
+          figure={stats.roundsWon + stats.roundsLost}
+          icon={<DeviceGamepadIcon color={theme.colors.yellow[6]} size={28} />}
+        />
         <Grid.Col>
           <AppPaper>
             <Text size="sm" align="center" pb="xs">

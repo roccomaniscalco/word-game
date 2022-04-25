@@ -1,6 +1,6 @@
-import { Box, Center, Container, Stack } from "@mantine/core"
-import { status } from "../hooks/useRound"
+import { Center, Container, Stack } from "@mantine/core"
 import useGameLogic from "../hooks/useGameLogic"
+import { status } from "../hooks/useRound"
 import GameBoard from "./GameBoard"
 import Keyboard from "./Keyboard"
 import NewRoundButton from "./NewRoundButton"
@@ -32,13 +32,13 @@ const Game = () => {
         <Center style={{ flex: 1, width: "100%" }}>
           <GameBoard gameBoard={gameBoard} />
         </Center>
-        <Box>
+        <div>
           <Keyboard
             keys={keys}
             currentRow={currentRow}
             onClick={handleKeyClick}
           />
-        </Box>
+        </div>
       </Stack>
     </Container>
   )

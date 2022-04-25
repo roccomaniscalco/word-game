@@ -1,10 +1,9 @@
 import {
-  Box,
   Group,
   Progress,
   Stack,
   Text,
-  useMantineTheme,
+  useMantineTheme
 } from "@mantine/core"
 import { useStats } from "../../contexts/StatsContext"
 
@@ -19,20 +18,19 @@ const StatisticsGuessDistribution = () => {
           <Text style={{ width: 6 }} size="sm" weight={700} align="center">
             {guess}
           </Text>
-          <Box style={{ flex: 1 }}>
-            <Progress
-              value={Math.round((count / stats.roundsWon) * 100)}
-              label={count}
-              size="xl"
-              radius="xl"
-              sx={{
-                backgroundColor:
-                  theme.colorScheme === "dark"
-                    ? theme.colors.dark[4]
-                    : theme.colors.gray[4],
-              }}
-            />
-          </Box>
+          <Progress
+            value={Math.round((count / stats.roundsWon) * 100)}
+            label={count}
+            size="xl"
+            radius="xl"
+            sx={{
+              flex: 1,
+              backgroundColor:
+                theme.colorScheme === "dark"
+                  ? theme.colors.dark[4]
+                  : theme.colors.gray[4],
+            }}
+          />
         </Group>
       ))}
     </Stack>

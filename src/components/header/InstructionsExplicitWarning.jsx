@@ -1,7 +1,7 @@
-import { Box, Group, Text, ThemeIcon } from "@mantine/core"
+import { Group, Text, ThemeIcon } from "@mantine/core"
 import {
   AlertTriangle as AlertTriangleIcon,
-  ExternalLink as ExternalLinkIcon,
+  ExternalLink as ExternalLinkIcon
 } from "tabler-icons-react"
 import AppPaper from "../common/AppPaper"
 
@@ -12,7 +12,7 @@ const InstructionsExplicitWarning = () => {
         <ThemeIcon size="xl" color="yellow" variant="light">
           <AlertTriangleIcon />
         </ThemeIcon>
-        <Box>
+        <div>
           <Text size="sm" weight={700}>
             Word list contains explicit words
           </Text>
@@ -28,7 +28,7 @@ const InstructionsExplicitWarning = () => {
           >
             View word list <ExternalLinkIcon size={16} />
           </Text>
-        </Box>
+        </div>
       </Group>
     </AppPaper>
   )

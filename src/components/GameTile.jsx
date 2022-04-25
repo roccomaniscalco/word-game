@@ -1,4 +1,4 @@
-import { Box, createStyles, keyframes, Paper, Title } from "@mantine/core"
+import { createStyles, keyframes, Paper, Title } from "@mantine/core"
 import { bool, number, string } from "prop-types"
 import { memo } from "react"
 import { letterEvaluation } from "../constants/propTypes"
@@ -107,7 +107,7 @@ const GameTile = ({ letter, evaluation, colI, shouldBounce }) => {
   const { classes, cx } = useStyles({ evaluation: evaluation, colI })
 
   return (
-    <Box className={cx(shouldBounce && classes.bounce)}>
+    <div className={cx(shouldBounce && classes.bounce)}>
       <Paper
         className={cx(
           classes.tile,
@@ -117,7 +117,7 @@ const GameTile = ({ letter, evaluation, colI, shouldBounce }) => {
       >
         <Title order={1}>{letter}</Title>
       </Paper>
-    </Box>
+    </div>
   )
 }
 

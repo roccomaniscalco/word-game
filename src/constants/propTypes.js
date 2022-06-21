@@ -1,6 +1,5 @@
 import { arrayOf, exact, oneOf, string } from "prop-types"
-import { status } from "../hooks/useRound"
-import { evals } from "./qwerty"
+import { evals, status } from "./enums"
 
 export const roundStatus = oneOf(Object.values(status))
 

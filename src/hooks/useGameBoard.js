@@ -1,5 +1,5 @@
 import { useLocalStorageValue } from "@mantine/hooks"
-import { evals } from "../constants/qwerty"
+import { evals } from "../constants/enums"
 import { EVALUATE_ROW, IS_WORD } from "../constants/words"
 
 const useGameBoard = (isRoundOver, correctWord, updateRound, updateKeys) => {

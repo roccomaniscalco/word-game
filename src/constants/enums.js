@@ -33,3 +33,9 @@ export const evals = {
   UNUSED: "UNUSED",
   TBD: "TBD",
 }
+
+export const status = {
+  WIN: "win",
+  LOSE: "lose",
+  TBD: "tbd",
+}

@@ -1,4 +1,4 @@
-import { evals } from "./qwerty"
+import { evals } from "./enums"
 
 const WORDS = new Set([
   "which",

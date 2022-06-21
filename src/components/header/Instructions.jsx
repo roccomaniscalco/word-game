@@ -1,6 +1,6 @@
 import { Divider, Text } from "@mantine/core"
 import { Help as HelpIcon } from "tabler-icons-react"
-import { evals } from "../../constants/qwerty"
+import { evals } from "../../constants/enums"
 import useHasVisited from "../../hooks/useHasVisited"
 import AppModal from "../common/AppModal"
 import InstructionsExplicitWarning from "./InstructionsExplicitWarning"

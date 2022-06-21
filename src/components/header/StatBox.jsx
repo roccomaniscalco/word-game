@@ -25,7 +25,7 @@ const StatBox = ({ title, figure, icon }) => {
 StatBox.propTypes = {
   title: string.isRequired,
   figure: number.isRequired,
-  icon: node.isRequired
+  icon: node.isRequired,
 }
 
 export default StatBox

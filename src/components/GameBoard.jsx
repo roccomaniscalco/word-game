@@ -1,6 +1,6 @@
 import { createStyles, SimpleGrid } from "@mantine/core"
 import { gameBoard } from "../constants/propTypes"
-import { evals } from "../constants/qwerty"
+import { evals } from "../constants/enums"
 import GameTile from "./GameTile"
 
 const useStyles = createStyles({

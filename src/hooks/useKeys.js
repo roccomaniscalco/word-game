@@ -1,5 +1,5 @@
 import { useLocalStorageValue } from "@mantine/hooks"
-import { evals, LETTERS } from "../constants/qwerty"
+import { evals, LETTERS } from "../constants/enums"
 
 const defaultKeys = LETTERS.reduce(
   (keys, letter) => ({ ...keys, [letter]: evals.TBD }),

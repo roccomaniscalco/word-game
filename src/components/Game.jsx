@@ -1,6 +1,6 @@
 import { Center, Container, Stack } from "@mantine/core"
+import { status } from "../constants/enums"
 import useGameLogic from "../hooks/useGameLogic"
-import { status } from "../hooks/useRound"
 import GameBoard from "./GameBoard"
 import Keyboard from "./Keyboard"
 import NewRoundButton from "./NewRoundButton"
@@ -29,16 +29,16 @@ const Game = () => {
             onClick={resetWordinator}
           />
         )}
+
         <Center style={{ flex: 1, width: "100%" }}>
           <GameBoard gameBoard={gameBoard} />
         </Center>
-        <div>
-          <Keyboard
-            keys={keys}
-            currentRow={currentRow}
-            onClick={handleKeyClick}
-          />
-        </div>
+
+        <Keyboard
+          keys={keys}
+          currentRow={currentRow}
+          onClick={handleKeyClick}
+        />
       </Stack>
     </Container>
   )

@@ -1,8 +1,8 @@
 import { Button, createStyles, keyframes } from "@mantine/core"
 import { func, string } from "prop-types"
 import { PlayerPlay as PlayerPlayIcon } from "tabler-icons-react"
+import { status } from "../constants/enums"
 import { roundStatus } from "../constants/propTypes"
-import { status } from "../hooks/useRound"
 
 // plays when component mounts
 const slideDown = keyframes({

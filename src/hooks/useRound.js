@@ -1,12 +1,7 @@
 import { useLocalStorageValue } from "@mantine/hooks"
+import { status } from "../constants/enums"
 import { GET_RANDOM_WORD } from "../constants/words"
 import { useStats } from "../contexts/StatsContext"
-
-export const status = {
-  WIN: "win",
-  LOSE: "lose",
-  TBD: "tbd",
-}
 
 const useRound = () => {
   const { dispatch } = useStats()
@@ -30,7 +25,7 @@ const useRound = () => {
 
   const updateRound = (gameBoard, rowI) => {
     const currentWord = gameBoard[rowI].map(({ letter }) => letter).join("")
-    if (currentWord === correctWord) win(rowI + 1) 
+    if (currentWord === correctWord) win(rowI + 1)
     else if (gameBoard[5].length !== 0) lose()
   }
 

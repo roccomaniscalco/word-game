@@ -2,7 +2,7 @@ import { createStyles, keyframes, Paper, Title } from "@mantine/core"
 import { bool, number, string } from "prop-types"
 import { memo } from "react"
 import { letterEvaluation } from "../constants/propTypes"
-import { evals } from "../constants/qwerty"
+import { evals } from "../constants/enums"
 import useEvalColor from "../styles/useEvalColor"
 
 const useStyles = createStyles((theme, { colI, evaluation }) => {

@@ -47,7 +47,7 @@ const StatsContext = createContext({
 export const StatsProvider = ({ children }) => {
   const [stats, dispatch] = useReducer(statsReducer, initialStats, initStats)
 
-  // set stats to localStorage when a change is made
+  // store stats in localStorage when a change is made
   useEffect(() => {
     localStorage.setItem("stats", JSON.stringify(stats))
   }, [stats])

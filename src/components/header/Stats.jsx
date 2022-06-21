@@ -9,9 +9,9 @@ import { useStats } from "../../contexts/StatsContext"
 import AppModal from "../common/AppModal"
 import AppPaper from "../common/AppPaper"
 import StatBox from "./StatBox"
-import StatisticsGuessDistribution from "./StatisticsGuessDistribution"
+import StatGuessDistribution from "./StatGuessDistribution"
 
-const Statistics = () => {
+const Stats = () => {
   const theme = useMantineTheme()
   const { stats } = useStats()
 
@@ -47,7 +47,7 @@ const Statistics = () => {
             <Text size="sm" align="center" pb="xs">
               Guess Distribution
             </Text>
-            <StatisticsGuessDistribution />
+            <StatGuessDistribution />
           </AppPaper>
         </Grid.Col>
       </Grid>
@@ -55,4 +55,4 @@ const Statistics = () => {
   )
 }
 
-export default Statistics
+export default Stats

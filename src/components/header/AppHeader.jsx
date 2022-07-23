@@ -12,8 +12,6 @@ const useStyles = createStyles((theme) => ({
     display: "flex",
     alignItems: "center",
     justifyContent: "space-between",
-
-    height: 50,
     paddingInline: theme.spacing.md,
   },
 }))
@@ -22,7 +20,7 @@ const AppHeader = () => {
   const { classes } = useStyles()
 
   return (
-    <Header className={classes.header}>
+    <Header height={50} className={classes.header}>
       <Title order={3}>Word+</Title>
       <Group spacing="xs">
         <Stats />

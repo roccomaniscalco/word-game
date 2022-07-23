@@ -5,8 +5,9 @@ import GameTile from "./GameTile"
 
 const useStyles = createStyles({
   board: {
-    maxWidth: "400px",
-    width: "100%",
+    maxWidth: "100%",
+    height: "100%",
+    maxHeight: "500px",
     gridTemplateRows: "repeat(6, 1fr)",
   },
 })

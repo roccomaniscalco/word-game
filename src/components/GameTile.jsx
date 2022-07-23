@@ -115,7 +115,7 @@ const GameTile = ({ letter, evaluation, colI, shouldBounce }) => {
           evaluation !== evals.TBD && classes.flip
         )}
       >
-        <Title order={1}>{letter}</Title>
+        <Title order={1} sx={{lineHeight: 1}}>{letter}</Title>
       </Paper>
     </div>
   )

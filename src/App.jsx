@@ -22,6 +22,14 @@ function App() {
           root: {
             height: "calc(100vh - env(safe-area-inset-bottom))",
           },
+          main: {
+            position: "absolute",
+            top: "0",
+            left: "0",
+            right: "0",
+            bottom: "0",
+            overflow: "hidden",
+          }
         }}
       >
         <Game />

@@ -20,15 +20,7 @@ function App() {
         header={<AppHeader />}
         styles={{
           root: {
-            position: "fixed",
-            minHeight: "100vh",
-            // duplicate keys needed for fallback styles
-            // eslint-disable-next-line
-            minHeight: "-moz-available",
-            // eslint-disable-next-line
-            minHeight: "-webkit-fill-available",
-            // eslint-disable-next-line
-            minHeight: "fill-available",
+            height: "calc(100vh - env(safe-area-inset-bottom))",
           },
         }}
       >

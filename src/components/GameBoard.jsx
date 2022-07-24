@@ -7,7 +7,7 @@ const useStyles = createStyles({
   board: {
     maxWidth: "100%",
     height: "100%",
-    maxHeight: "500px",
+    maxHeight: "400px",
     gridTemplateRows: "repeat(6, 1fr)",
   },
 })

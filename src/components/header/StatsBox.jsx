@@ -2,7 +2,7 @@ import { Center, Grid, Stack, Text, Title } from "@mantine/core"
 import { string, number, node } from "prop-types"
 import AppPaper from "../common/AppPaper"
 
-const StatBox = ({ title, figure, icon }) => {
+const StatsBox = ({ title, figure, icon }) => {
   return (
     <Grid.Col span={6}>
       <AppPaper>
@@ -22,10 +22,10 @@ const StatBox = ({ title, figure, icon }) => {
   )
 }
 
-StatBox.propTypes = {
+StatsBox.propTypes = {
   title: string.isRequired,
   figure: number.isRequired,
   icon: node.isRequired,
 }
 
-export default StatBox
+export default StatsBox

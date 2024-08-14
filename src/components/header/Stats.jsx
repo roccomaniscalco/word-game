@@ -8,8 +8,8 @@ import {
 import { useStats } from "../../contexts/StatsContext"
 import AppModal from "../common/AppModal"
 import AppPaper from "../common/AppPaper"
-import StatBox from "./StatBox"
-import StatGuessDistribution from "./StatGuessDistribution"
+import StatsBox from "./StatsBox"
+import StatsGuessDistribution from "./StatsGuessDistribution"
 
 const Stats = () => {
   const theme = useMantineTheme()
@@ -18,17 +18,17 @@ const Stats = () => {
   return (
     <AppModal title="Statistics" Icon={ChartBarIcon}>
       <Grid>
-        <StatBox
+        <StatsBox
           title="Best Streak"
           figure={stats.highestStreak}
           icon={<FlameIcon color={theme.colors.red[6]} size={28} />}
         />
-        <StatBox
+        <StatsBox
           title="Current Streak"
           figure={stats.currentStreak}
           icon={<FlameIcon color={theme.colors.red[6]} size={28} />}
         />
-        <StatBox
+        <StatsBox
           title="Percentage Won"
           figure={
             Math.round(
@@ -37,7 +37,7 @@ const Stats = () => {
           }
           icon={<PercentageIcon color={theme.colors.violet[6]} size={28} />}
         />
-        <StatBox
+        <StatsBox
           title="Games Played"
           figure={stats.roundsWon + stats.roundsLost}
           icon={<DeviceGamepadIcon color={theme.colors.yellow[6]} size={28} />}
@@ -47,7 +47,7 @@ const Stats = () => {
             <Text size="sm" align="center" pb="xs">
               Guess Distribution
             </Text>
-            <StatGuessDistribution />
+            <StatsGuessDistribution />
           </AppPaper>
         </Grid.Col>
       </Grid>

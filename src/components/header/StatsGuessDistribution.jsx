@@ -7,7 +7,7 @@ import {
 } from "@mantine/core"
 import { useStats } from "../../contexts/StatsContext"
 
-const StatGuessDistribution = () => {
+const StatsGuessDistribution = () => {
   const theme = useMantineTheme()
   const { stats } = useStats()
 
@@ -37,4 +37,4 @@ const StatGuessDistribution = () => {
   )
 }
 
-export default StatGuessDistribution
+export default StatsGuessDistribution

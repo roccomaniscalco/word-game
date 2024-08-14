@@ -21,7 +21,7 @@ const AppHeader = () => {
 
   return (
     <Header height={50} className={classes.header}>
-      <Title order={3}>Word+</Title>
+      <Title order={3}>Wordinator</Title>
       <Group spacing="xs">
         <Stats />
         <Instructions />

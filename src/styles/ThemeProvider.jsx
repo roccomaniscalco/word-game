@@ -6,7 +6,6 @@ const ThemeProvider = ({ children }) => {
   const [colorScheme, setColorScheme] = useLocalStorage({
     key: "mantine-color-scheme",
     defaultValue: "light",
-    getInitialValueInEffect: true,
   })
   const toggleColorScheme = () =>
     setColorScheme((prevValue) => (prevValue === "dark" ? "light" : "dark"))

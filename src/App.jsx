@@ -19,16 +19,9 @@ function App() {
         fixed
         header={<AppHeader />}
         styles={{
-          root: {
-            height: "100dvh",
-          },
           main: {
-            position: "absolute",
-            top: "0",
-            left: "0",
-            right: "0",
-            bottom: "0",
-            overflow: "hidden",
+            minHeight: "0",
+            height: "100dvh",
           }
         }}
       >

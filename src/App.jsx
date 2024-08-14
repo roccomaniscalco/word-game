@@ -20,7 +20,7 @@ function App() {
         header={<AppHeader />}
         styles={{
           root: {
-            height: "calc(100vh - env(safe-area-inset-bottom))",
+            height: "100dvh",
           },
           main: {
             position: "absolute",
